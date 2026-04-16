@@ -1,0 +1,1582 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Oryx — Agencia mexicana de lanzamiento de infoproductos para creadores gastronómicos. Revenue share. Sin inversión. Lanzamiento en 30 días." />
+  <title>Oryx · Para Creadores Gastronómicos</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    /* ─── TOKENS ─── */
+    :root {
+      --black:      #0a0a0a;
+      --off-black:  #111111;
+      --dark:       #181818;
+      --gold:       #c9a84c;
+      --gold-light: #e8c97a;
+      --gold-dim:   rgba(201,168,76,0.35);
+      --cream:      #f5f0e8;
+      --gray:       #7a7570;
+      --gray-light: #a09890;
+      --border:     rgba(201,168,76,0.18);
+      --border-dim: rgba(255,255,255,0.05);
+    }
+
+    /* ─── RESET ─── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--black);
+      color: var(--cream);
+      font-family: 'DM Sans', system-ui, sans-serif;
+      font-weight: 300;
+      font-size: 16px;
+      line-height: 1.7;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+
+    /* ─── TYPOGRAPHY ─── */
+    .serif { font-family: 'Playfair Display', Georgia, serif; }
+
+    /* ─── LABEL ─── */
+    .label {
+      display: inline-block;
+      font-size: 0.65rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.2rem;
+    }
+
+    /* ─── DIVIDER ─── */
+    .rule {
+      width: 48px;
+      height: 0.5px;
+      background: var(--gold);
+      opacity: 0.45;
+      margin-bottom: 2.8rem;
+    }
+
+    /* ─── BUTTONS ─── */
+    .btn {
+      display: inline-block;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 0.95rem 2.2rem;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+    .btn-gold {
+      background: var(--gold);
+      color: var(--black);
+      border: 0.5px solid var(--gold);
+    }
+    .btn-gold:hover {
+      background: var(--gold-light);
+      transform: translateY(-2px);
+      box-shadow: 0 16px 40px rgba(201,168,76,0.22);
+    }
+    .btn-outline {
+      background: transparent;
+      color: var(--cream);
+      border: 0.5px solid var(--border);
+    }
+    .btn-outline:hover {
+      border-color: var(--gold-dim);
+      color: var(--gold);
+    }
+
+    /* ─── SCROLL REVEAL ─── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(44px);
+      transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-d1 { transition-delay: 0.10s; }
+    .reveal-d2 { transition-delay: 0.20s; }
+    .reveal-d3 { transition-delay: 0.30s; }
+    .reveal-d4 { transition-delay: 0.40s; }
+    .reveal-d5 { transition-delay: 0.50s; }
+    .reveal-d6 { transition-delay: 0.60s; }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 1.6rem 4rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: background 0.4s, padding 0.4s, border-color 0.4s;
+      border-bottom: 0.5px solid transparent;
+    }
+    nav.scrolled {
+      background: rgba(10,10,10,0.92);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      padding: 1.1rem 4rem;
+      border-bottom-color: var(--border);
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.35rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+    .nav-right { display: flex; align-items: center; gap: 2rem; }
+    .nav-links-inline {
+      list-style: none;
+      display: flex;
+      gap: 2.2rem;
+    }
+    .nav-links-inline a {
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gray-light);
+      transition: color 0.25s;
+    }
+    .nav-links-inline a:hover { color: var(--gold); }
+    .nav-cta {
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--cream);
+      border: 0.5px solid var(--border);
+      padding: 0.6rem 1.4rem;
+      transition: all 0.3s;
+    }
+    .nav-cta:hover { border-color: var(--gold-dim); color: var(--gold); }
+
+    /* Mobile toggle */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 2px;
+    }
+    .hamburger span {
+      width: 22px; height: 0.5px;
+      background: var(--cream);
+      display: block;
+      transition: transform 0.3s, opacity 0.3s;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(5.5px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-5.5px) rotate(-45deg); }
+
+    /* Mobile drawer */
+    .mobile-drawer {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 99;
+      background: var(--off-black);
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2.8rem;
+      border-top: 0.5px solid var(--border);
+    }
+    .mobile-drawer.open { display: flex; }
+    .mobile-drawer a {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 400;
+      color: var(--cream);
+      letter-spacing: 0.04em;
+      transition: color 0.25s;
+    }
+    .mobile-drawer a:hover { color: var(--gold); }
+
+    /* ─── HERO ─── */
+    #hero {
+      position: relative;
+    }
+    .hero-glow {
+      position: absolute; inset: 0; pointer-events: none; z-index: 0;
+      background:
+        radial-gradient(ellipse 65% 55% at 50% 62%, rgba(201,168,76,0.07) 0%, transparent 68%),
+        radial-gradient(ellipse 35% 28% at 15% 18%, rgba(201,168,76,0.04) 0%, transparent 60%),
+        radial-gradient(ellipse 25% 25% at 85% 80%, rgba(201,168,76,0.03) 0%, transparent 60%);
+    }
+    /* Vertical line dropping from top */
+    .hero-topline {
+      position: absolute;
+      top: 0; left: 50%;
+      transform: translateX(-50%);
+      width: 0.5px; height: 100px;
+      background: linear-gradient(to bottom, transparent, var(--gold));
+      opacity: 0;
+      animation: lineDown 1s 0.2s ease forwards;
+      z-index: 0;
+    }
+    @keyframes lineDown {
+      from { opacity: 0; height: 0; }
+      to   { opacity: 0.45; height: 100px; }
+    }
+
+    .hero-content { position: relative; z-index: 1; max-width: 860px; }
+
+    .hero-eyebrow {
+      font-size: 0.68rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.2rem;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.4s forwards;
+    }
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.4rem, 5.5vw, 4.4rem);
+      font-weight: 400;
+      line-height: 1.1;
+      margin-bottom: 1rem;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.6s forwards;
+    }
+    .hero-title em { font-style: italic; color: var(--gold); }
+    .hero-sub {
+      font-size: 0.95rem;
+      color: var(--gray-light);
+      max-width: 500px;
+      margin: 0 auto 1.8rem;
+      line-height: 1.75;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.8s forwards;
+    }
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      opacity: 0;
+      animation: fadeUp 0.8s 1s forwards;
+    }
+
+    /* Hero stats bar */
+    .hero-stats {
+      position: relative;
+      z-index: 1;
+      margin-top: 2.4rem;
+      padding-top: 1.8rem;
+      border-top: 0.5px solid var(--border);
+      display: flex;
+      justify-content: center;
+      gap: 0;
+      opacity: 0;
+      animation: fadeUp 0.8s 1.2s forwards;
+    }
+    .hero-stat {
+      flex: 1;
+      max-width: 200px;
+      padding: 0 2rem;
+      border-right: 0.5px solid var(--border);
+      text-align: center;
+    }
+    .hero-stat:last-child { border-right: none; }
+    .hero-stat strong {
+      display: block;
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      color: var(--gold);
+      line-height: 1;
+      margin-bottom: 0.3rem;
+    }
+    .hero-stat span {
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gray);
+    }
+
+    /* Scroll indicator */
+    .hero-scroll {
+      position: absolute;
+      bottom: 2.5rem; left: 50%;
+      transform: translateX(-50%);
+      display: flex; flex-direction: column;
+      align-items: center; gap: 0.6rem;
+      opacity: 0;
+      animation: fadeUp 0.8s 1.4s forwards;
+    }
+    .hero-scroll span {
+      font-size: 0.62rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gray);
+    }
+    .scroll-line {
+      width: 0.5px; height: 40px;
+      background: linear-gradient(to bottom, var(--gray), transparent);
+      animation: scrollPulse 2.2s ease-in-out infinite;
+    }
+
+    /* ─── PROBLEM ─── */
+    #problem {
+      background: var(--off-black);
+      border-top: 0.5px solid var(--border);
+      border-bottom: 0.5px solid var(--border);
+    }
+    .problem-inner {
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 7rem 4rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 7rem;
+      align-items: start;
+    }
+    .problem-body p {
+      font-size: 1rem;
+      color: rgba(245,240,232,0.65);
+      line-height: 1.85;
+      margin-bottom: 1.1rem;
+    }
+    .problem-body p strong { color: var(--cream); font-weight: 500; }
+    .pain-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      border: 0.5px solid var(--border);
+    }
+    .pain-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1.2rem;
+      padding: 1.2rem 1.5rem;
+      border-bottom: 0.5px solid var(--border-dim);
+      font-size: 0.9rem;
+      color: rgba(245,240,232,0.58);
+      line-height: 1.65;
+      transition: background 0.3s, color 0.3s;
+    }
+    .pain-item:last-child { border-bottom: none; }
+    .pain-item:hover {
+      background: rgba(201,168,76,0.03);
+      color: rgba(245,240,232,0.78);
+    }
+    .pain-dash {
+      width: 16px;
+      height: 0.5px;
+      background: var(--gold);
+      opacity: 0.5;
+      flex-shrink: 0;
+      margin-top: 0.75rem;
+    }
+
+    /* ─── MANIFESTO ─── */
+    #manifesto {
+      padding: 7rem 4rem;
+      max-width: 1160px;
+      margin: 0 auto;
+    }
+    .manifesto-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 7rem;
+      align-items: start;
+    }
+    .value-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.5px;
+      background: var(--border);
+      border: 0.5px solid var(--border);
+    }
+    .value-card {
+      background: var(--black);
+      padding: 2.4rem 2rem;
+      position: relative;
+      overflow: hidden;
+      transition: background 0.3s;
+    }
+    .value-card:hover { background: var(--off-black); }
+    .value-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.8rem;
+      color: var(--gold);
+      opacity: 0.15;
+      line-height: 1;
+      margin-bottom: 1.2rem;
+    }
+    .value-title {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--cream);
+      margin-bottom: 0.6rem;
+    }
+    .value-desc {
+      font-size: 0.8rem;
+      color: var(--gray);
+      line-height: 1.7;
+    }
+
+    /* ─── PROCESS ─── */
+    #process {
+      background: var(--off-black);
+      border-top: 0.5px solid var(--border);
+    }
+    .process-inner {
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 7rem 4rem;
+    }
+    .steps {
+      margin-top: 4rem;
+      border: 0.5px solid var(--border);
+    }
+    .step {
+      display: grid;
+      grid-template-columns: 72px 1fr 200px;
+      gap: 2rem;
+      padding: 2.4rem 3rem;
+      border-bottom: 0.5px solid var(--border-dim);
+      align-items: start;
+      transition: background 0.3s;
+    }
+    .step:last-child { border-bottom: none; }
+    .step:hover { background: rgba(201,168,76,0.025); }
+    .step-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      color: var(--gold);
+      opacity: 0.25;
+      line-height: 1;
+    }
+    .step-title {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--cream);
+      margin-bottom: 0.5rem;
+    }
+    .step-desc {
+      font-size: 0.85rem;
+      color: var(--gray);
+      line-height: 1.75;
+    }
+    .step-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      align-items: flex-start;
+      padding-top: 0.2rem;
+    }
+    .step-tag {
+      font-size: 0.62rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.28rem 0.7rem;
+      border: 0.5px solid var(--border);
+      color: var(--gold);
+      opacity: 0.8;
+    }
+
+    /* ─── INCLUDES ─── */
+    #includes {
+      padding: 7rem 4rem;
+      max-width: 1160px;
+      margin: 0 auto;
+    }
+    .includes-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.5px;
+      background: var(--border);
+      border: 0.5px solid var(--border);
+      margin-top: 4rem;
+    }
+    .include-item {
+      background: var(--black);
+      padding: 2.2rem 2.5rem;
+      display: flex;
+      gap: 1.4rem;
+      align-items: flex-start;
+      transition: background 0.3s;
+    }
+    .include-item:hover { background: var(--off-black); }
+    .include-icon {
+      width: 38px; height: 38px;
+      border: 0.5px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: var(--gold);
+    }
+    .include-icon svg { width: 16px; height: 16px; }
+    .include-title {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--cream);
+      margin-bottom: 0.35rem;
+    }
+    .include-desc {
+      font-size: 0.8rem;
+      color: var(--gray);
+      line-height: 1.65;
+    }
+
+    /* ─── MODEL ─── */
+    #model {
+      background: var(--off-black);
+      border-top: 0.5px solid var(--border);
+      border-bottom: 0.5px solid var(--border);
+    }
+    .model-inner {
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 7rem 4rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 7rem;
+      align-items: start;
+    }
+    .model-table {
+      border: 0.5px solid var(--border);
+      position: relative;
+    }
+    .model-table::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, var(--gold), transparent);
+    }
+    .model-table-header {
+      padding: 1.2rem 1.8rem;
+      border-bottom: 0.5px solid var(--border);
+    }
+    .model-table-header p {
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+    .model-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.1rem 1.8rem;
+      border-bottom: 0.5px solid var(--border-dim);
+      transition: background 0.25s;
+    }
+    .model-row:last-child { border-bottom: none; }
+    .model-row:hover { background: rgba(201,168,76,0.03); }
+    .model-label {
+      font-size: 0.85rem;
+      color: var(--gray-light);
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+    .model-label::before {
+      content: '';
+      width: 4px; height: 4px;
+      border-radius: 50%;
+      background: var(--gold);
+      opacity: 0.5;
+      flex-shrink: 0;
+    }
+    .model-value {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--cream);
+    }
+    .model-value.accent { color: var(--gold); }
+    .model-body p {
+      font-size: 0.95rem;
+      color: rgba(245,240,232,0.62);
+      line-height: 1.85;
+      margin-bottom: 1rem;
+    }
+    .check-list {
+      list-style: none;
+      margin-top: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+    }
+    .check-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      font-size: 0.88rem;
+      color: rgba(245,240,232,0.62);
+      line-height: 1.65;
+    }
+    .check-list li::before {
+      content: '';
+      width: 14px; height: 14px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23c9a84c' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");
+      background-size: contain;
+      background-repeat: no-repeat;
+      flex-shrink: 0;
+      margin-top: 2px;
+      opacity: 0.8;
+    }
+
+    /* ─── TESTIMONIALS ─── */
+    #testimonials {
+      padding: 7rem 0;
+      overflow: hidden;
+      border-bottom: 0.5px solid var(--border);
+    }
+    .testimonials-head {
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 0 4rem 4rem;
+    }
+    .track-wrap {
+      position: relative;
+    }
+    .track-wrap::before,
+    .track-wrap::after {
+      content: '';
+      position: absolute;
+      top: 0; bottom: 0;
+      width: 140px;
+      z-index: 2;
+      pointer-events: none;
+    }
+    .track-wrap::before { left: 0; background: linear-gradient(to right, var(--black), transparent); }
+    .track-wrap::after  { right: 0; background: linear-gradient(to left, var(--black), transparent); }
+    .track {
+      display: flex;
+      gap: 0.5px;
+      animation: marquee 36s linear infinite;
+      width: max-content;
+      background: var(--border);
+    }
+    .track:hover { animation-play-state: paused; }
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+    .tcard {
+      background: var(--black);
+      padding: 2.8rem 2.4rem;
+      width: 360px;
+      flex-shrink: 0;
+    }
+    .tcard-stars {
+      display: flex;
+      gap: 3px;
+      margin-bottom: 1.4rem;
+    }
+    .tcard-stars span { color: var(--gold); font-size: 12px; }
+    .tcard blockquote {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 0.95rem;
+      line-height: 1.7;
+      color: rgba(245,240,232,0.8);
+      margin-bottom: 1.8rem;
+    }
+    .tcard-author { display: flex; align-items: center; gap: 1rem; }
+    .tcard-avatar {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      border: 0.5px solid var(--border);
+      background: var(--off-black);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 0.9rem;
+      color: var(--gold);
+      flex-shrink: 0;
+    }
+    .tcard-name {
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--cream);
+      display: block;
+    }
+    .tcard-role {
+      font-size: 0.72rem;
+      color: var(--gray);
+      letter-spacing: 0.04em;
+    }
+
+    /* ─── CTA ─── */
+    #cta {
+      padding: 10rem 4rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    #cta::before {
+      content: '';
+      position: absolute; inset: 0; pointer-events: none;
+      background: radial-gradient(ellipse 55% 65% at 50% 50%, rgba(201,168,76,0.065) 0%, transparent 68%);
+    }
+    .cta-inner { position: relative; max-width: 680px; margin: 0 auto; }
+    .cta-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.4rem, 5vw, 3.8rem);
+      font-weight: 400;
+      line-height: 1.12;
+      margin-bottom: 1.4rem;
+    }
+    .cta-title em { font-style: italic; color: var(--gold); }
+    .cta-sub {
+      font-size: 0.95rem;
+      color: var(--gray-light);
+      max-width: 440px;
+      margin: 0 auto 3rem;
+      line-height: 1.85;
+    }
+    .cta-note {
+      margin-top: 1.4rem;
+      font-size: 0.72rem;
+      letter-spacing: 0.06em;
+      color: rgba(122,117,112,0.55);
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      border-top: 0.5px solid var(--border);
+      padding: 2.2rem 4rem;
+    }
+    .footer-inner {
+      max-width: 1160px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .footer-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+    .footer-copy {
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      color: rgba(122,117,112,0.5);
+    }
+    .footer-ig {
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      color: var(--gray);
+      transition: color 0.25s;
+    }
+    .footer-ig:hover { color: var(--gold); }
+
+    /* ─── HERO CARD ─── */
+    .hero-card-wrap {
+      position: relative;
+      z-index: 1;
+      margin-top: 2rem;
+      width: 100%;
+      max-width: 900px;
+      perspective: 1000px;
+      opacity: 0;
+      animation: fadeUp 0.8s 1.5s forwards;
+    }
+    .hero-card-inner {
+      border: 3px solid #4a4a4a;
+      border-radius: 24px;
+      padding: 6px;
+      background: #1a1a1a;
+      box-shadow:
+        0 0 #0000004d,
+        0 9px 20px #0000004a,
+        0 37px 37px #00000042,
+        0 84px 50px #00000026,
+        0 149px 60px #0000000a;
+      transform-origin: 50% 0%;
+      transform: rotateX(20deg) scale(1.05);
+      will-change: transform;
+    }
+    .hero-card-img {
+      width: 100%;
+      height: clamp(160px, 22vh, 260px);
+      object-fit: cover;
+      object-position: left top;
+      border-radius: 18px;
+      display: block;
+      pointer-events: none;
+      user-select: none;
+    }
+    @media (max-width: 768px) {
+      .hero-card-wrap { margin-top: 1.5rem; }
+      .hero-card-img { height: clamp(130px, 18vh, 200px); }
+    }
+
+    /* ─── CONTAINER SCROLL ANIMATION ─── */
+    #hero {
+      min-height: 160vh; /* espacio extra para que la animación se desarrolle */
+    }
+    .hero-sticky-wrap {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding: max(5rem, 10vh) 4rem 2rem;
+      text-align: center;
+      overflow: hidden;
+      pointer-events: none;
+    }
+    .hero-sticky-wrap > * { pointer-events: auto; }
+
+    /* ─── HERO PARALLAX LAYERS ─── */
+    .hero-parallax-layer {
+      position: absolute;
+      inset: -20% 0;          /* más alto que el viewport para que nunca quede vacío */
+      pointer-events: none;
+      z-index: 0;
+      will-change: transform;
+    }
+    /* Orbs de profundidad — se mueven a distintas velocidades */
+    .hero-orb {
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+      will-change: transform;
+    }
+    .hero-orb-1 {
+      width: 640px; height: 640px;
+      top: 5%; left: -12%;
+      background: radial-gradient(circle at 40% 40%, rgba(201,168,76,0.09) 0%, transparent 65%);
+      filter: blur(60px);
+    }
+    .hero-orb-2 {
+      width: 440px; height: 440px;
+      top: 20%; right: -8%;
+      background: radial-gradient(circle at 60% 50%, rgba(201,168,76,0.06) 0%, transparent 65%);
+      filter: blur(80px);
+    }
+    .hero-orb-3 {
+      width: 260px; height: 260px;
+      bottom: 15%; left: 38%;
+      background: radial-gradient(circle, rgba(201,168,76,0.05) 0%, transparent 65%);
+      filter: blur(50px);
+    }
+    /* Líneas decorativas — cuadrícula sutil */
+    .hero-grid-lines {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      background-image:
+        linear-gradient(rgba(201,168,76,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(201,168,76,0.03) 1px, transparent 1px);
+      background-size: 80px 80px;
+      mask-image: radial-gradient(ellipse 80% 70% at 50% 40%, black 0%, transparent 75%);
+      -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 40%, black 0%, transparent 75%);
+    }
+
+    /* ─── ANIMATIONS ─── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes scrollPulse {
+      0%, 100% { opacity: 0.25; }
+      50%       { opacity: 0.7; }
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 1024px) {
+      .manifesto-grid,
+      .model-inner { grid-template-columns: 1fr; gap: 4rem; }
+      .value-grid { grid-template-columns: 1fr 1fr; }
+      .step { grid-template-columns: 60px 1fr; }
+      .step-tags { display: none; }
+    }
+    @media (max-width: 768px) {
+      nav { padding: 1.2rem 1.5rem; }
+      nav.scrolled { padding: 1rem 1.5rem; }
+      .nav-links-inline { display: none; }
+      .hamburger { display: flex; }
+      .hero-sticky-wrap { padding: 8rem 1.5rem 5rem; }
+      .hero-stats { flex-direction: column; gap: 1.5rem; align-items: center; }
+      .hero-stat { border-right: none; border-bottom: 0.5px solid var(--border); padding: 1rem 0; width: 100%; }
+      .hero-stat:last-child { border-bottom: none; }
+      .problem-inner { grid-template-columns: 1fr; gap: 3.5rem; padding: 5rem 1.5rem; }
+      #manifesto { padding: 5rem 1.5rem; }
+      .manifesto-grid { gap: 3.5rem; }
+      .value-grid { grid-template-columns: 1fr; }
+      #process .process-inner { padding: 5rem 1.5rem; }
+      .step { padding: 1.8rem 1.5rem; }
+      #includes { padding: 5rem 1.5rem; }
+      .includes-grid { grid-template-columns: 1fr; }
+      .model-inner { padding: 5rem 1.5rem; }
+      #cta { padding: 7rem 1.5rem; }
+      footer { padding: 2rem 1.5rem; }
+      .footer-inner { flex-direction: column; align-items: flex-start; gap: 0.8rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ─── NAV ─── -->
+<nav id="navbar">
+  <a href="#hero" class="nav-logo">Oryx</a>
+  <div class="nav-right">
+    <ul class="nav-links-inline">
+      <li><a href="#problem">La realidad</a></li>
+      <li><a href="#process">Proceso</a></li>
+      <li><a href="#model">Modelo</a></li>
+    </ul>
+    <a href="https://instagram.com/oryx.company" target="_blank" rel="noopener" class="nav-cta">DM en Instagram</a>
+    <button class="hamburger" id="hamburger" aria-label="Abrir menú" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile drawer -->
+<div class="mobile-drawer" id="drawer" role="dialog" aria-label="Menú">
+  <a href="#problem" class="drawer-link">La realidad</a>
+  <a href="#manifesto" class="drawer-link">Propuesta</a>
+  <a href="#process" class="drawer-link">Proceso</a>
+  <a href="#model" class="drawer-link">Modelo</a>
+  <a href="#cta" class="drawer-link">Contacto</a>
+</div>
+
+<!-- ─── HERO ─── -->
+<section id="hero">
+  <div class="hero-sticky-wrap">
+    <!-- Parallax layers — cada uno se mueve a distinta velocidad vía JS -->
+    <div class="hero-parallax-layer" id="heroParallaxSlow">
+      <div class="hero-orb hero-orb-1"></div>
+      <div class="hero-orb hero-orb-2"></div>
+    </div>
+    <div class="hero-parallax-layer" id="heroParallaxFast">
+      <div class="hero-orb hero-orb-3"></div>
+    </div>
+    <div class="hero-grid-lines" id="heroGrid"></div>
+
+    <div class="hero-glow"></div>
+    <div class="hero-topline"></div>
+
+    <div class="hero-content" id="heroHeader">
+      <p class="hero-eyebrow">Para creadores gastronómicos</p>
+      <h1 class="hero-title">
+        Tu conocimiento tiene<br>
+        <em>más valor</em> del que crees
+      </h1>
+      <p class="hero-sub">
+        Convertimos lo que ya sabes en un infoproducto de alta calidad — contigo, no para ti. Sin inversión de tu parte.
+      </p>
+      <div class="hero-actions">
+        <a href="https://instagram.com/oryx.company" target="_blank" rel="noopener" class="btn btn-gold">Quiero saber más</a>
+        <a href="#process" class="btn btn-outline">Cómo funciona</a>
+      </div>
+    </div>
+
+    <div class="hero-stats" id="heroStats">
+      <div class="hero-stat">
+        <strong>30</strong>
+        <span>Días al lanzamiento</span>
+      </div>
+      <div class="hero-stat">
+        <strong>$0</strong>
+        <span>Inversión del creador</span>
+      </div>
+      <div class="hero-stat">
+        <strong>100%</strong>
+        <span>Producción a cargo nuestro</span>
+      </div>
+    </div>
+
+    <div class="hero-card-wrap">
+      <div class="hero-card-inner" id="heroCard">
+        <img
+          src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=1400&q=80"
+          alt="Oryx — Infoproductos para creadores gastronómicos"
+          class="hero-card-img"
+          draggable="false"
+        />
+      </div>
+    </div>
+
+    <div class="hero-scroll">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── PROBLEM ─── -->
+<section id="problem">
+  <div class="problem-inner">
+    <div class="reveal">
+      <p class="label">La realidad</p>
+      <h2 class="serif" style="font-size:clamp(2rem,4vw,3rem);font-weight:400;line-height:1.2;margin-bottom:1.2rem;">
+        Tienes audiencia.<br><em style="font-style:italic;color:var(--gold)">¿Y ahora?</em>
+      </h2>
+      <div class="rule"></div>
+      <div class="problem-body">
+        <p>Llevas meses —tal vez años— creando contenido de valor. Tu audiencia confía en ti, aprende contigo, te sigue porque <strong>saben que sabes lo que haces.</strong></p>
+        <p>Pero convertir esa confianza en ingresos reales requiere tiempo, tecnología y una operación completa que ningún creador tiene solo.</p>
+        <p>Ahí entramos nosotros.</p>
+      </div>
+    </div>
+
+    <ul class="pain-list reveal reveal-d2">
+      <li class="pain-item">
+        <span class="pain-dash"></span>
+        No tienes tiempo para construir un curso desde cero
+      </li>
+      <li class="pain-item">
+        <span class="pain-dash"></span>
+        No sabes por dónde empezar con funnels y páginas de venta
+      </li>
+      <li class="pain-item">
+        <span class="pain-dash"></span>
+        Sientes que tu audiencia compraría, pero no sabes cómo activarla
+      </li>
+      <li class="pain-item">
+        <span class="pain-dash"></span>
+        No quieres invertir dinero sin saber si va a funcionar
+      </li>
+      <li class="pain-item">
+        <span class="pain-dash"></span>
+        No quieres perder el control de tu marca ni tu comunidad
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ─── MANIFESTO ─── -->
+<section id="manifesto">
+  <div class="manifesto-grid">
+    <div class="reveal">
+      <p class="label">La propuesta</p>
+      <h2 class="serif" style="font-size:clamp(2rem,4vw,3.2rem);font-weight:400;line-height:1.2;margin-bottom:1.2rem;">
+        No trabajamos <em style="font-style:italic;color:var(--gold)">para</em> creadores.<br>
+        Trabajamos <em style="font-style:italic;color:var(--gold)">junto</em> a ellos.
+      </h2>
+      <div class="rule"></div>
+      <p style="font-size:1rem;color:rgba(245,240,232,0.62);line-height:1.85;max-width:480px;">
+        Oryx toma todo lo que sabes y lo convierte en un infoproducto — curso, mentoría, guía — lanzado en 30 días. Tú decides la dirección. Nosotros ejecutamos todo.
+      </p>
+    </div>
+
+    <div class="reveal reveal-d2">
+      <div class="value-grid">
+        <div class="value-card">
+          <div class="value-num">01</div>
+          <div class="value-title">Tú pones el talento</div>
+          <div class="value-desc">Tu nombre, tu audiencia, tu conocimiento. Eso es lo único que necesitas aportar.</div>
+        </div>
+        <div class="value-card">
+          <div class="value-num">02</div>
+          <div class="value-title">Nosotros ponemos el sistema</div>
+          <div class="value-desc">Producción completa: infoproducto, landing, funnel, copywriting y guiones personalizados.</div>
+        </div>
+        <div class="value-card">
+          <div class="value-num">03</div>
+          <div class="value-title">Juntos, los resultados</div>
+          <div class="value-desc">Lanzamiento en 30 días. Revenue share. Si tú no ganas, nosotros tampoco.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── PROCESS ─── -->
+<section id="process">
+  <div class="process-inner">
+    <div class="reveal">
+      <p class="label">El proceso</p>
+      <h2 class="serif" style="font-size:clamp(2rem,4vw,3.2rem);font-weight:400;line-height:1.2;margin-bottom:1.2rem;">
+        30 días.<br><em style="font-style:italic;color:var(--gold)">De cero a lanzamiento.</em>
+      </h2>
+      <div class="rule"></div>
+    </div>
+
+    <div class="steps">
+      <div class="step reveal">
+        <div class="step-num">01</div>
+        <div>
+          <div class="step-title">Diagnóstico y estrategia</div>
+          <div class="step-desc">Analizamos tu audiencia, tu contenido y tu historia para definir el infoproducto con mayor potencial de conversión para tu comunidad específica.</div>
+        </div>
+        <div class="step-tags">
+          <span class="step-tag">Análisis</span>
+          <span class="step-tag">Estrategia</span>
+          <span class="step-tag">Posicionamiento</span>
+        </div>
+      </div>
+
+      <div class="step reveal reveal-d1">
+        <div class="step-num">02</div>
+        <div>
+          <div class="step-title">Producción del infoproducto</div>
+          <div class="step-desc">Diseñamos y producimos el curso, mentoría o guía. Escribimos los guiones basados en tu historia para que conecte auténticamente con tu audiencia.</div>
+        </div>
+        <div class="step-tags">
+          <span class="step-tag">Guiones</span>
+          <span class="step-tag">Producción</span>
+          <span class="step-tag">Copywriting</span>
+        </div>
+      </div>
+
+      <div class="step reveal reveal-d2">
+        <div class="step-num">03</div>
+        <div>
+          <div class="step-title">Sistema de ventas</div>
+          <div class="step-desc">Construimos tu landing page, funnel de ventas y activamos el calentamiento con triggers mentales diseñados para tu audiencia específica.</div>
+        </div>
+        <div class="step-tags">
+          <span class="step-tag">Landing page</span>
+          <span class="step-tag">Funnel</span>
+          <span class="step-tag">Triggers</span>
+        </div>
+      </div>
+
+      <div class="step reveal reveal-d3">
+        <div class="step-num">04</div>
+        <div>
+          <div class="step-title">Lanzamiento vía historias</div>
+          <div class="step-desc">Ejecutamos la estrategia de venta orgánica a través de tus historias de Instagram — sin forzar la relación con tu audiencia, sin que se sienta una venta.</div>
+        </div>
+        <div class="step-tags">
+          <span class="step-tag">Historias IG</span>
+          <span class="step-tag">Ventas orgánicas</span>
+          <span class="step-tag">30 días</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── INCLUDES ─── -->
+<section id="includes">
+  <div class="reveal">
+    <p class="label">Lo que incluye</p>
+    <h2 class="serif" style="font-size:clamp(2rem,4vw,3.2rem);font-weight:400;line-height:1.2;margin-bottom:1.2rem;">
+      Todo lo que necesitas<br>para <em style="font-style:italic;color:var(--gold)">lanzar.</em>
+    </h2>
+    <div class="rule"></div>
+  </div>
+
+  <div class="includes-grid">
+    <div class="include-item reveal">
+      <div class="include-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/>
+        </svg>
+      </div>
+      <div>
+        <div class="include-title">Infoproducto completo</div>
+        <div class="include-desc">Curso, mentoría o guía producida de inicio a fin. Diseño, estructura, contenido y plataforma.</div>
+      </div>
+    </div>
+
+    <div class="include-item reveal reveal-d1">
+      <div class="include-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+        </svg>
+      </div>
+      <div>
+        <div class="include-title">Landing page de ventas</div>
+        <div class="include-desc">Página diseñada para convertir visitantes en compradores. Copy optimizado para tu audiencia.</div>
+      </div>
+    </div>
+
+    <div class="include-item reveal reveal-d1">
+      <div class="include-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+        </svg>
+      </div>
+      <div>
+        <div class="include-title">Funnel de ventas</div>
+        <div class="include-desc">Sistema completo de captación, calentamiento y cierre. Cada paso diseñado para tu perfil.</div>
+      </div>
+    </div>
+
+    <div class="include-item reveal reveal-d2">
+      <div class="include-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 20h9M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>
+        </svg>
+      </div>
+      <div>
+        <div class="include-title">Guiones personalizados</div>
+        <div class="include-desc">Escritos desde tu historia y tu voz. Para que el lanzamiento suene auténtico, no como venta forzada.</div>
+      </div>
+    </div>
+
+    <div class="include-item reveal reveal-d2">
+      <div class="include-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+        </svg>
+      </div>
+      <div>
+        <div class="include-title">Sistema de calentamiento</div>
+        <div class="include-desc">Estrategia de historias con triggers mentales que preparan a tu audiencia para comprar antes del lanzamiento.</div>
+      </div>
+    </div>
+
+    <div class="include-item reveal reveal-d3">
+      <div class="include-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+        </svg>
+      </div>
+      <div>
+        <div class="include-title">Acompañamiento en los 30 días</div>
+        <div class="include-desc">Trabajamos junto a ti en cada etapa. Tú decides, nosotros ejecutamos. Tu marca siempre bajo tu control.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── MODEL ─── -->
+<section id="model">
+  <div class="model-inner">
+    <div class="reveal">
+      <div class="model-table">
+        <div class="model-table-header">
+          <p>Modelo de colaboración</p>
+        </div>
+        <div class="model-row">
+          <span class="model-label">Inversión del creador</span>
+          <span class="model-value accent">$0</span>
+        </div>
+        <div class="model-row">
+          <span class="model-label">Producción del contenido</span>
+          <span class="model-value">Oryx</span>
+        </div>
+        <div class="model-row">
+          <span class="model-label">Copywriting &amp; guiones</span>
+          <span class="model-value">Oryx</span>
+        </div>
+        <div class="model-row">
+          <span class="model-label">Landing page &amp; funnel</span>
+          <span class="model-value">Oryx</span>
+        </div>
+        <div class="model-row">
+          <span class="model-label">Nombre &amp; audiencia</span>
+          <span class="model-value">Creador</span>
+        </div>
+        <div class="model-row">
+          <span class="model-label">Tiempo de lanzamiento</span>
+          <span class="model-value accent">30 días</span>
+        </div>
+        <div class="model-row">
+          <span class="model-label">Modelo de pago</span>
+          <span class="model-value accent">Revenue Share</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="model-body reveal reveal-d2">
+      <p class="label">Nuestro modelo</p>
+      <h2 class="serif" style="font-size:clamp(2rem,4vw,3.2rem);font-weight:400;line-height:1.2;margin-bottom:1.2rem;">
+        Sin riesgo.<br><em style="font-style:italic;color:var(--gold)">Socios de verdad.</em>
+      </h2>
+      <div class="rule"></div>
+      <p>Nos alejamos del modelo tradicional de agencia. No cobramos por hora, ni por proyecto. Nos convertimos en tus socios — y solo ganamos cuando tú ganas.</p>
+      <p>Esto nos obliga a comprometernos con tu éxito al mismo nivel que con el nuestro.</p>
+      <ul class="check-list">
+        <li>Sin pago anticipado ni inversión inicial de tu parte</li>
+        <li>Producimos el 100% del infoproducto y sistema de ventas</li>
+        <li>Lanzamiento garantizado en 30 días calendario</li>
+        <li>Soporte completo durante y después del lanzamiento</li>
+        <li>Revenue share transparente acordado de antemano</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ─── TESTIMONIALS ─── -->
+<section id="testimonials">
+  <div class="testimonials-head">
+    <p class="label reveal">Creadores que confían en Oryx</p>
+    <h2 class="serif reveal reveal-d1" style="font-size:clamp(2rem,4vw,3.2rem);font-weight:400;line-height:1.2;">
+      Resultados que hablan.
+    </h2>
+  </div>
+
+  <div class="track-wrap reveal">
+    <div class="track">
+      <!-- Set 1 -->
+      <div class="tcard">
+        <div class="tcard-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <blockquote>"Nunca pensé que podía tener un curso propio. Oryx lo hizo realidad en menos de un mes y sin que yo tuviera que invertir nada."</blockquote>
+        <div class="tcard-author">
+          <div class="tcard-avatar">MC</div>
+          <div>
+            <span class="tcard-name">María Covarrubias</span>
+            <span class="tcard-role">Chef &amp; creadora de contenido</span>
+          </div>
+        </div>
+      </div>
+      <div class="tcard">
+        <div class="tcard-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <blockquote>"El copy que escribieron para mi lanzamiento sonaba exactamente como yo. La conversión fue increíble."</blockquote>
+        <div class="tcard-author">
+          <div class="tcard-avatar">RC</div>
+          <div>
+            <span class="tcard-name">Rodrigo Castillo</span>
+            <span class="tcard-role">Pastelero &amp; influencer gastronómico</span>
+          </div>
+        </div>
+      </div>
+      <div class="tcard">
+        <div class="tcard-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <blockquote>"El sistema de historias generó más ventas en 5 días que en 3 meses de contenido regular."</blockquote>
+        <div class="tcard-author">
+          <div class="tcard-avatar">LM</div>
+          <div>
+            <span class="tcard-name">Lorena Martínez</span>
+            <span class="tcard-role">Maestra de cocina tradicional</span>
+          </div>
+        </div>
+      </div>
+      <div class="tcard">
+        <div class="tcard-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <blockquote>"Oryx se comprometió como si fuera su propio negocio. El modelo revenue share resultó ser exactamente lo que necesitaba."</blockquote>
+        <div class="tcard-author">
+          <div class="tcard-avatar">AF</div>
+          <div>
+            <span class="tcard-name">Adriana Fuentes</span>
+            <span class="tcard-role">Nutrióloga &amp; creadora digital</span>
+          </div>
+        </div>
+      </div>
+      <div class="tcard">
+        <div class="tcard-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <blockquote>"Desde el diagnóstico hasta el último día de lanzamiento, sentí que tenía un equipo completo detrás. Eso no tiene precio."</blockquote>
+        <div class="tcard-author">
+          <div class="tcard-avatar">JR</div>
+          <div>
+            <span class="tcard-name">Jorge Ramos</span>
+            <span class="tcard-role">Chef de autor &amp; podcaster</span>
+          </div>
+        </div>
+      </div>
+      <!-- Duplicate for seamless loop -->
+      <div class="tcard">
+        <div class="tcard-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <blockquote>"Nunca pensé que podía tener un curso propio. Oryx lo hizo realidad en menos de un mes y sin que yo tuviera que invertir nada."</blockquote>
+        <div class="tcard-author">
+          <div class="tcard-avatar">MC</div>
+          <div>
+            <span class="tcard-name">María Covarrubias</span>
+            <span class="tcard-role">Chef &amp; creadora de contenido</span>
+          </div>
+        </div>
+      </div>
+      <div class="tcard">
+        <div class="tcard-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <blockquote>"El copy que escribieron para mi lanzamiento sonaba exactamente como yo. La conversión fue increíble."</blockquote>
+        <div class="tcard-author">
+          <div class="tcard-avatar">RC</div>
+          <div>
+            <span class="tcard-name">Rodrigo Castillo</span>
+            <span class="tcard-role">Pastelero &amp; influencer gastronómico</span>
+          </div>
+        </div>
+      </div>
+      <div class="tcard">
+        <div class="tcard-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <blockquote>"El sistema de historias generó más ventas en 5 días que en 3 meses de contenido regular."</blockquote>
+        <div class="tcard-author">
+          <div class="tcard-avatar">LM</div>
+          <div>
+            <span class="tcard-name">Lorena Martínez</span>
+            <span class="tcard-role">Maestra de cocina tradicional</span>
+          </div>
+        </div>
+      </div>
+      <div class="tcard">
+        <div class="tcard-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <blockquote>"Oryx se comprometió como si fuera su propio negocio. El modelo revenue share resultó ser exactamente lo que necesitaba."</blockquote>
+        <div class="tcard-author">
+          <div class="tcard-avatar">AF</div>
+          <div>
+            <span class="tcard-name">Adriana Fuentes</span>
+            <span class="tcard-role">Nutrióloga &amp; creadora digital</span>
+          </div>
+        </div>
+      </div>
+      <div class="tcard">
+        <div class="tcard-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <blockquote>"Desde el diagnóstico hasta el último día de lanzamiento, sentí que tenía un equipo completo detrás. Eso no tiene precio."</blockquote>
+        <div class="tcard-author">
+          <div class="tcard-avatar">JR</div>
+          <div>
+            <span class="tcard-name">Jorge Ramos</span>
+            <span class="tcard-role">Chef de autor &amp; podcaster</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CTA ─── -->
+<section id="cta">
+  <div class="cta-inner">
+    <p class="label reveal">¿Listo para lanzar?</p>
+    <h2 class="cta-title serif reveal reveal-d1">
+      Tu audiencia ya<br>
+      está lista.<br>
+      <em>¿Lo estás tú?</em>
+    </h2>
+    <p class="cta-sub reveal reveal-d2">
+      Sin inversión. Sin riesgo. Solo tu conocimiento convertido en ingresos reales — en 30 días.
+    </p>
+    <a href="https://instagram.com/oryx.company" target="_blank" rel="noopener" class="btn btn-gold reveal reveal-d3">
+      Escríbenos en Instagram
+    </a>
+    <p class="cta-note reveal reveal-d4">Trabajamos con un número limitado de creadores por ciclo de lanzamiento</p>
+  </div>
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <div class="footer-inner">
+    <a href="#hero" class="footer-logo">Oryx</a>
+    <p class="footer-copy">© 2025 Oryx · Para Creadores Gastronómicos</p>
+    <a href="https://instagram.com/oryx.company" target="_blank" rel="noopener" class="footer-ig">@oryx.company</a>
+  </div>
+</footer>
+
+<!-- ─── JS ─── -->
+<script>
+  // Navbar scroll state
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 48);
+  }, { passive: true });
+
+  // Hamburger / drawer
+  const hamburger = document.getElementById('hamburger');
+  const drawer    = document.getElementById('drawer');
+  const drawerLinks = document.querySelectorAll('.drawer-link');
+
+  function setDrawer(open) {
+    hamburger.classList.toggle('open', open);
+    drawer.classList.toggle('open', open);
+    hamburger.setAttribute('aria-expanded', open);
+    document.body.style.overflow = open ? 'hidden' : '';
+  }
+
+  hamburger.addEventListener('click', () => setDrawer(!drawer.classList.contains('open')));
+  drawerLinks.forEach(l => l.addEventListener('click', () => setDrawer(false)));
+
+  // ─── Scroll Reveal con stagger automático ───
+  // Aplica .reveal a todos los hijos directos de listas/grids que no lo tengan,
+  // asignando delays escalonados automáticamente.
+  const autoStaggerSelectors = [
+    '.pain-list   > .pain-item',
+    '.value-grid  > .value-card',
+    '.steps       > .step',
+    '.includes-grid > .include-item',
+    '.track-wrap',
+  ];
+  autoStaggerSelectors.forEach(sel => {
+    document.querySelectorAll(sel).forEach((el, i) => {
+      if (!el.classList.contains('reveal')) {
+        el.classList.add('reveal');
+        el.style.transitionDelay = `${i * 0.1}s`;
+      }
+    });
+  });
+
+  const reveals = document.querySelectorAll('.reveal');
+  const ro = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        ro.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.08,
+    rootMargin: '0px 0px -48px 0px'
+  });
+  reveals.forEach(el => ro.observe(el));
+
+  // ─── ContainerScroll + Parallax Animation ───
+  const heroSection      = document.getElementById('hero');
+  const heroCard         = document.getElementById('heroCard');
+  const heroHeader       = document.getElementById('heroHeader');
+  const heroParallaxSlow = document.getElementById('heroParallaxSlow');
+  const heroParallaxFast = document.getElementById('heroParallaxFast');
+  const heroGrid         = document.getElementById('heroGrid');
+  const isMob            = () => window.innerWidth <= 768;
+
+  function updateContainerScroll() {
+    if (!heroSection || !heroCard) return;
+
+    const rect      = heroSection.getBoundingClientRect();
+    const h         = heroSection.offsetHeight;
+    const vh        = window.innerHeight;
+
+    // p: 0 al entrar el hero, 1 al terminar su scroll zone
+    const scrolled  = -rect.top;
+    const maxScroll = h - vh;
+    const p         = Math.max(0, Math.min(1, scrolled / Math.max(maxScroll, 1)));
+
+    // ── ContainerScroll (tarjeta 3D) ──
+    const mobile     = isMob();
+    const scaleStart = mobile ? 0.7 : 1.05;
+    const scaleEnd   = mobile ? 0.9 : 1.0;
+
+    heroCard.style.transform =
+      `rotateX(${20 * (1 - p)}deg) scale(${scaleStart + (scaleEnd - scaleStart) * p})`;
+
+    if (heroHeader) heroHeader.style.transform = `translateY(${-100 * p}px)`;
+
+    // ── Parallax de fondo: 3 capas a velocidades distintas ──
+    // Capa lenta (orbs grandes) — se mueven hacia arriba más despacio que el scroll
+    if (heroParallaxSlow) heroParallaxSlow.style.transform = `translateY(${-50 * p}px)`;
+    // Capa media (orb pequeño) — velocidad intermedia
+    if (heroParallaxFast) heroParallaxFast.style.transform = `translateY(${-120 * p}px)`;
+    // Cuadrícula — se desvanece conforme se scrollea
+    if (heroGrid) heroGrid.style.opacity = String(1 - p * 1.4);
+  }
+
+  window.addEventListener('scroll', updateContainerScroll, { passive: true });
+  updateContainerScroll();
+
+  // Smooth scroll
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - 72, behavior: 'smooth' });
+      }
+    });
+  });
+</script>
+</body>
+</html>
