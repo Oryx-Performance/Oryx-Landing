@@ -633,87 +633,59 @@
       opacity: 0.8;
     }
 
-    /* ─── TESTIMONIALS ─── */
-    #testimonials {
-      padding: 7rem 0;
-      overflow: hidden;
+    /* ─── PILOTO ─── */
+    #piloto {
+      border-top: 0.5px solid var(--border);
       border-bottom: 0.5px solid var(--border);
-    }
-    .testimonials-head {
-      max-width: 1160px;
-      margin: 0 auto;
-      padding: 0 4rem 4rem;
-    }
-    .track-wrap {
-      position: relative;
-    }
-    .track-wrap::before,
-    .track-wrap::after {
-      content: '';
-      position: absolute;
-      top: 0; bottom: 0;
-      width: 140px;
-      z-index: 2;
-      pointer-events: none;
-    }
-    .track-wrap::before { left: 0; background: linear-gradient(to right, var(--black), transparent); }
-    .track-wrap::after  { right: 0; background: linear-gradient(to left, var(--black), transparent); }
-    .track {
-      display: flex;
-      gap: 0.5px;
-      animation: marquee 36s linear infinite;
-      width: max-content;
-      background: var(--border);
-    }
-    .track:hover { animation-play-state: paused; }
-    @keyframes marquee {
-      from { transform: translateX(0); }
-      to   { transform: translateX(-50%); }
-    }
-    .tcard {
-      background: var(--black);
-      padding: 2.8rem 2.4rem;
-      width: 360px;
-      flex-shrink: 0;
-    }
-    .tcard-stars {
-      display: flex;
-      gap: 3px;
-      margin-bottom: 1.4rem;
-    }
-    .tcard-stars span { color: var(--gold); font-size: 12px; }
-    .tcard blockquote {
-      font-family: 'Playfair Display', serif;
-      font-style: italic;
-      font-size: 0.95rem;
-      line-height: 1.7;
-      color: rgba(245,240,232,0.8);
-      margin-bottom: 1.8rem;
-    }
-    .tcard-author { display: flex; align-items: center; gap: 1rem; }
-    .tcard-avatar {
-      width: 40px; height: 40px;
-      border-radius: 50%;
-      border: 0.5px solid var(--border);
       background: var(--off-black);
-      display: flex;
+    }
+    .piloto-inner {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 8rem 4rem;
+      text-align: center;
+    }
+    .piloto-badge {
+      display: inline-flex;
       align-items: center;
-      justify-content: center;
-      font-family: 'Playfair Display', serif;
-      font-size: 0.9rem;
+      gap: 0.6rem;
+      border: 0.5px solid var(--border);
+      padding: 0.45rem 1.1rem;
+      margin-bottom: 2.4rem;
+      font-size: 0.62rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
       color: var(--gold);
+    }
+    .piloto-badge-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--gold);
+      animation: pulseDot 2s ease-in-out infinite;
       flex-shrink: 0;
     }
-    .tcard-name {
-      font-size: 0.82rem;
-      font-weight: 500;
-      color: var(--cream);
-      display: block;
+    @keyframes pulseDot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%       { opacity: 0.4; transform: scale(0.7); }
     }
-    .tcard-role {
-      font-size: 0.72rem;
-      color: var(--gray);
-      letter-spacing: 0.04em;
+    .piloto-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.9rem, 4vw, 3rem);
+      font-weight: 400;
+      line-height: 1.25;
+      margin-bottom: 2rem;
+      color: var(--cream);
+    }
+    .piloto-title em { font-style: italic; color: var(--gold); }
+    .piloto-sub {
+      font-size: 0.92rem;
+      color: var(--gray-light);
+      line-height: 1.8;
+      max-width: 520px;
+      margin: 0 auto 2.8rem;
+    }
+    @media (max-width: 768px) {
+      .piloto-inner { padding: 6rem 1.5rem; }
     }
 
     /* ─── CTA ─── */
@@ -1313,130 +1285,26 @@
   </div>
 </section>
 
-<!-- ─── TESTIMONIALS ─── -->
-<section id="testimonials">
-  <div class="testimonials-head">
-    <p class="label reveal">Creadores que confían en Oryx</p>
-    <h2 class="serif reveal reveal-d1" style="font-size:clamp(2rem,4vw,3.2rem);font-weight:400;line-height:1.2;">
-      Resultados que hablan.
-    </h2>
-  </div>
-
-  <div class="track-wrap reveal">
-    <div class="track">
-      <!-- Set 1 -->
-      <div class="tcard">
-        <div class="tcard-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-        <blockquote>"Nunca pensé que podía tener un curso propio. Oryx lo hizo realidad en menos de un mes y sin que yo tuviera que invertir nada."</blockquote>
-        <div class="tcard-author">
-          <div class="tcard-avatar">MC</div>
-          <div>
-            <span class="tcard-name">María Covarrubias</span>
-            <span class="tcard-role">Chef &amp; creadora de contenido</span>
-          </div>
-        </div>
-      </div>
-      <div class="tcard">
-        <div class="tcard-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-        <blockquote>"El copy que escribieron para mi lanzamiento sonaba exactamente como yo. La conversión fue increíble."</blockquote>
-        <div class="tcard-author">
-          <div class="tcard-avatar">RC</div>
-          <div>
-            <span class="tcard-name">Rodrigo Castillo</span>
-            <span class="tcard-role">Pastelero &amp; influencer gastronómico</span>
-          </div>
-        </div>
-      </div>
-      <div class="tcard">
-        <div class="tcard-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-        <blockquote>"El sistema de historias generó más ventas en 5 días que en 3 meses de contenido regular."</blockquote>
-        <div class="tcard-author">
-          <div class="tcard-avatar">LM</div>
-          <div>
-            <span class="tcard-name">Lorena Martínez</span>
-            <span class="tcard-role">Maestra de cocina tradicional</span>
-          </div>
-        </div>
-      </div>
-      <div class="tcard">
-        <div class="tcard-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-        <blockquote>"Oryx se comprometió como si fuera su propio negocio. El modelo revenue share resultó ser exactamente lo que necesitaba."</blockquote>
-        <div class="tcard-author">
-          <div class="tcard-avatar">AF</div>
-          <div>
-            <span class="tcard-name">Adriana Fuentes</span>
-            <span class="tcard-role">Nutrióloga &amp; creadora digital</span>
-          </div>
-        </div>
-      </div>
-      <div class="tcard">
-        <div class="tcard-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-        <blockquote>"Desde el diagnóstico hasta el último día de lanzamiento, sentí que tenía un equipo completo detrás. Eso no tiene precio."</blockquote>
-        <div class="tcard-author">
-          <div class="tcard-avatar">JR</div>
-          <div>
-            <span class="tcard-name">Jorge Ramos</span>
-            <span class="tcard-role">Chef de autor &amp; podcaster</span>
-          </div>
-        </div>
-      </div>
-      <!-- Duplicate for seamless loop -->
-      <div class="tcard">
-        <div class="tcard-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-        <blockquote>"Nunca pensé que podía tener un curso propio. Oryx lo hizo realidad en menos de un mes y sin que yo tuviera que invertir nada."</blockquote>
-        <div class="tcard-author">
-          <div class="tcard-avatar">MC</div>
-          <div>
-            <span class="tcard-name">María Covarrubias</span>
-            <span class="tcard-role">Chef &amp; creadora de contenido</span>
-          </div>
-        </div>
-      </div>
-      <div class="tcard">
-        <div class="tcard-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-        <blockquote>"El copy que escribieron para mi lanzamiento sonaba exactamente como yo. La conversión fue increíble."</blockquote>
-        <div class="tcard-author">
-          <div class="tcard-avatar">RC</div>
-          <div>
-            <span class="tcard-name">Rodrigo Castillo</span>
-            <span class="tcard-role">Pastelero &amp; influencer gastronómico</span>
-          </div>
-        </div>
-      </div>
-      <div class="tcard">
-        <div class="tcard-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-        <blockquote>"El sistema de historias generó más ventas en 5 días que en 3 meses de contenido regular."</blockquote>
-        <div class="tcard-author">
-          <div class="tcard-avatar">LM</div>
-          <div>
-            <span class="tcard-name">Lorena Martínez</span>
-            <span class="tcard-role">Maestra de cocina tradicional</span>
-          </div>
-        </div>
-      </div>
-      <div class="tcard">
-        <div class="tcard-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-        <blockquote>"Oryx se comprometió como si fuera su propio negocio. El modelo revenue share resultó ser exactamente lo que necesitaba."</blockquote>
-        <div class="tcard-author">
-          <div class="tcard-avatar">AF</div>
-          <div>
-            <span class="tcard-name">Adriana Fuentes</span>
-            <span class="tcard-role">Nutrióloga &amp; creadora digital</span>
-          </div>
-        </div>
-      </div>
-      <div class="tcard">
-        <div class="tcard-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-        <blockquote>"Desde el diagnóstico hasta el último día de lanzamiento, sentí que tenía un equipo completo detrás. Eso no tiene precio."</blockquote>
-        <div class="tcard-author">
-          <div class="tcard-avatar">JR</div>
-          <div>
-            <span class="tcard-name">Jorge Ramos</span>
-            <span class="tcard-role">Chef de autor &amp; podcaster</span>
-          </div>
-        </div>
+<!-- ─── PILOTO ─── -->
+<section id="piloto">
+  <div class="piloto-inner">
+    <div class="reveal">
+      <div class="piloto-badge">
+        <span class="piloto-badge-dot"></span>
+        En proceso
       </div>
     </div>
+    <h2 class="piloto-title reveal reveal-d1">
+      Primer lanzamiento en camino —<br>
+      seleccionando al <em>creador ideal</em><br>
+      para nuestro caso de estudio piloto.
+    </h2>
+    <p class="piloto-sub reveal reveal-d2">
+      Estamos eligiendo al primer creador gastronómico con quien construir y documentar el proceso completo. Si tienes audiencia y conocimiento, este lugar podría ser tuyo.
+    </p>
+    <a href="https://instagram.com/oryx.company" target="_blank" rel="noopener" class="btn btn-gold reveal reveal-d3">
+      Quiero ser el primero
+    </a>
   </div>
 </section>
 
