@@ -73,6 +73,7 @@
       padding: 0.95rem 2.2rem;
       transition: all 0.3s ease;
       cursor: pointer;
+      border: none;
     }
     .btn-gold {
       background: var(--gold);
@@ -153,12 +154,14 @@
       font-size: 0.72rem;
       letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: var(--cream);
-      border: 0.5px solid var(--border);
+      color: var(--black);
+      background: var(--gold);
+      border: 0.5px solid var(--gold);
       padding: 0.6rem 1.4rem;
       transition: all 0.3s;
+      cursor: pointer;
     }
-    .nav-cta:hover { border-color: var(--gold-dim); color: var(--gold); }
+    .nav-cta:hover { background: var(--gold-light); }
 
     /* Mobile toggle */
     .hamburger {
@@ -207,6 +210,7 @@
     /* ─── HERO ─── */
     #hero {
       position: relative;
+      min-height: 160vh;
     }
     .hero-glow {
       position: absolute; inset: 0; pointer-events: none; z-index: 0;
@@ -215,7 +219,6 @@
         radial-gradient(ellipse 35% 28% at 15% 18%, rgba(201,168,76,0.04) 0%, transparent 60%),
         radial-gradient(ellipse 25% 25% at 85% 80%, rgba(201,168,76,0.03) 0%, transparent 60%);
     }
-    /* Vertical line dropping from top */
     .hero-topline {
       position: absolute;
       top: 0; left: 50%;
@@ -328,6 +331,20 @@
       animation: scrollPulse 2.2s ease-in-out infinite;
     }
 
+    /* ─── URGENCY BAR ─── */
+    .urgency-bar {
+      background: var(--gold);
+      color: var(--black);
+      text-align: center;
+      padding: 0.8rem 2rem;
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      font-weight: 500;
+      position: relative;
+      z-index: 10;
+    }
+
     /* ─── PROBLEM ─── */
     #problem {
       background: var(--off-black);
@@ -429,9 +446,47 @@
       line-height: 1.7;
     }
 
+    /* ─── NOT FOR YOU ─── */
+    #notforyou {
+      background: var(--off-black);
+      border-top: 0.5px solid var(--border);
+      border-bottom: 0.5px solid var(--border);
+    }
+    .notforyou-inner {
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 7rem 4rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 7rem;
+      align-items: start;
+    }
+    .notforyou-list {
+      list-style: none;
+      border: 0.5px solid var(--border);
+    }
+    .notforyou-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1.2rem;
+      padding: 1.4rem 1.8rem;
+      border-bottom: 0.5px solid var(--border-dim);
+      font-size: 0.92rem;
+      color: rgba(245,240,232,0.62);
+      line-height: 1.65;
+    }
+    .notforyou-item:last-child { border-bottom: none; }
+    .notforyou-x {
+      font-size: 1rem;
+      color: rgba(201,168,76,0.45);
+      flex-shrink: 0;
+      margin-top: 0.1rem;
+      font-weight: 300;
+    }
+
     /* ─── PROCESS ─── */
     #process {
-      background: var(--off-black);
+      background: var(--black);
       border-top: 0.5px solid var(--border);
     }
     .process-inner {
@@ -684,8 +739,65 @@
       max-width: 520px;
       margin: 0 auto 2.8rem;
     }
-    @media (max-width: 768px) {
-      .piloto-inner { padding: 6rem 1.5rem; }
+
+    /* ─── FAQ ─── */
+    #faq {
+      padding: 7rem 4rem;
+      border-top: 0.5px solid var(--border);
+    }
+    .faq-inner {
+      max-width: 780px;
+      margin: 0 auto;
+    }
+    .faq-list {
+      margin-top: 3.5rem;
+      border: 0.5px solid var(--border);
+    }
+    .faq-item {
+      border-bottom: 0.5px solid var(--border-dim);
+    }
+    .faq-item:last-child { border-bottom: none; }
+    .faq-q {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1.5rem;
+      padding: 1.6rem 2rem;
+      background: none;
+      border: none;
+      cursor: pointer;
+      text-align: left;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.92rem;
+      font-weight: 500;
+      color: var(--cream);
+      letter-spacing: 0.01em;
+      transition: color 0.25s, background 0.25s;
+    }
+    .faq-q:hover { background: rgba(201,168,76,0.03); color: var(--gold); }
+    .faq-q.open { color: var(--gold); }
+    .faq-icon {
+      width: 20px; height: 20px;
+      flex-shrink: 0;
+      border: 0.5px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem;
+      color: var(--gold);
+      transition: transform 0.3s;
+      line-height: 1;
+    }
+    .faq-q.open .faq-icon { transform: rotate(45deg); }
+    .faq-a {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .faq-a-inner {
+      padding: 0 2rem 1.8rem;
+      font-size: 0.88rem;
+      color: rgba(245,240,232,0.62);
+      line-height: 1.85;
     }
 
     /* ─── CTA ─── */
@@ -716,8 +828,17 @@
       margin: 0 auto 3rem;
       line-height: 1.85;
     }
-    .cta-note {
+    .cta-secondary-link {
+      display: block;
       margin-top: 1.4rem;
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      color: var(--gray);
+      transition: color 0.25s;
+    }
+    .cta-secondary-link:hover { color: var(--gold); }
+    .cta-note {
+      margin-top: 2rem;
       font-size: 0.72rem;
       letter-spacing: 0.06em;
       color: rgba(122,117,112,0.55);
@@ -799,9 +920,6 @@
     }
 
     /* ─── CONTAINER SCROLL ANIMATION ─── */
-    #hero {
-      min-height: 160vh; /* espacio extra para que la animación se desarrolle */
-    }
     .hero-sticky-wrap {
       position: sticky;
       top: 0;
@@ -820,12 +938,11 @@
     /* ─── HERO PARALLAX LAYERS ─── */
     .hero-parallax-layer {
       position: absolute;
-      inset: -20% 0;          /* más alto que el viewport para que nunca quede vacío */
+      inset: -20% 0;
       pointer-events: none;
       z-index: 0;
       will-change: transform;
     }
-    /* Orbs de profundidad — se mueven a distintas velocidades */
     .hero-orb {
       position: absolute;
       border-radius: 50%;
@@ -850,7 +967,6 @@
       background: radial-gradient(circle, rgba(201,168,76,0.05) 0%, transparent 65%);
       filter: blur(50px);
     }
-    /* Líneas decorativas — cuadrícula sutil */
     .hero-grid-lines {
       position: absolute;
       inset: 0;
@@ -862,6 +978,113 @@
       background-size: 80px 80px;
       mask-image: radial-gradient(ellipse 80% 70% at 50% 40%, black 0%, transparent 75%);
       -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 40%, black 0%, transparent 75%);
+    }
+
+    /* ─── MODAL ─── */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      background: rgba(0,0,0,0.78);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+    }
+    .modal-overlay.open { display: flex; }
+    .modal-box {
+      background: var(--off-black);
+      border: 0.5px solid var(--border);
+      max-width: 520px;
+      width: 100%;
+      padding: 3rem;
+      position: relative;
+      animation: fadeUp 0.4s ease;
+    }
+    .modal-box::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, var(--gold), transparent);
+    }
+    .modal-close {
+      position: absolute;
+      top: 1.2rem; right: 1.4rem;
+      background: none;
+      border: none;
+      color: var(--gray);
+      font-size: 1.4rem;
+      cursor: pointer;
+      line-height: 1;
+      transition: color 0.2s;
+    }
+    .modal-close:hover { color: var(--cream); }
+    .modal-label {
+      font-size: 0.62rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.8rem;
+    }
+    .modal-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.7rem;
+      font-weight: 400;
+      margin-bottom: 0.5rem;
+      color: var(--cream);
+    }
+    .modal-sub {
+      font-size: 0.82rem;
+      color: var(--gray);
+      margin-bottom: 2rem;
+      line-height: 1.65;
+    }
+    .modal-form {
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+    }
+    .modal-form input,
+    .modal-form select {
+      width: 100%;
+      background: var(--black);
+      border: 0.5px solid var(--border);
+      color: var(--cream);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.88rem;
+      padding: 0.85rem 1.1rem;
+      outline: none;
+      transition: border-color 0.25s;
+      -webkit-appearance: none;
+      appearance: none;
+    }
+    .modal-form input::placeholder { color: var(--gray); }
+    .modal-form input:focus,
+    .modal-form select:focus { border-color: var(--gold-dim); }
+    .modal-form select { color: var(--gray); cursor: pointer; }
+    .modal-form select option { background: var(--off-black); color: var(--cream); }
+    .modal-form select.filled { color: var(--cream); }
+    .modal-form .btn { width: 100%; margin-top: 0.5rem; text-align: center; }
+    .modal-note {
+      margin-top: 1rem;
+      font-size: 0.72rem;
+      color: rgba(122,117,112,0.55);
+      text-align: center;
+      letter-spacing: 0.05em;
+    }
+    .modal-success {
+      display: none;
+      text-align: center;
+      padding: 1rem 0;
+    }
+    .modal-success p {
+      font-size: 0.9rem;
+      color: var(--gray-light);
+      line-height: 1.75;
+      margin-top: 0.6rem;
     }
 
     /* ─── ANIMATIONS ─── */
@@ -877,7 +1100,8 @@
     /* ─── RESPONSIVE ─── */
     @media (max-width: 1024px) {
       .manifesto-grid,
-      .model-inner { grid-template-columns: 1fr; gap: 4rem; }
+      .model-inner,
+      .notforyou-inner { grid-template-columns: 1fr; gap: 4rem; }
       .value-grid { grid-template-columns: 1fr 1fr; }
       .step { grid-template-columns: 60px 1fr; }
       .step-tags { display: none; }
@@ -892,6 +1116,7 @@
       .hero-stat { border-right: none; border-bottom: 0.5px solid var(--border); padding: 1rem 0; width: 100%; }
       .hero-stat:last-child { border-bottom: none; }
       .problem-inner { grid-template-columns: 1fr; gap: 3.5rem; padding: 5rem 1.5rem; }
+      .notforyou-inner { padding: 5rem 1.5rem; }
       #manifesto { padding: 5rem 1.5rem; }
       .manifesto-grid { gap: 3.5rem; }
       .value-grid { grid-template-columns: 1fr; }
@@ -900,13 +1125,57 @@
       #includes { padding: 5rem 1.5rem; }
       .includes-grid { grid-template-columns: 1fr; }
       .model-inner { padding: 5rem 1.5rem; }
+      #faq { padding: 5rem 1.5rem; }
+      .piloto-inner { padding: 6rem 1.5rem; }
       #cta { padding: 7rem 1.5rem; }
       footer { padding: 2rem 1.5rem; }
       .footer-inner { flex-direction: column; align-items: flex-start; gap: 0.8rem; }
+      .modal-box { padding: 2rem 1.5rem; }
     }
   </style>
 </head>
 <body>
+
+<!-- ─── MODAL ─── -->
+<div class="modal-overlay" id="modal" role="dialog" aria-modal="true" aria-label="Solicitar evaluación gratuita">
+  <div class="modal-box">
+    <button class="modal-close" id="modalClose" aria-label="Cerrar">&times;</button>
+    <div id="modalForm">
+      <p class="modal-label">Cupo limitado</p>
+      <h2 class="modal-title">Solicitar evaluación gratuita</h2>
+      <p class="modal-sub">Analizamos tu perfil sin costo. Si hay fit, te contactamos en menos de 48 horas.</p>
+      <!-- Reemplaza YOUR_FORM_ID con tu ID de Formspree (formspree.io) -->
+      <form class="modal-form" id="evalForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+        <input type="text" name="nombre" placeholder="Nombre completo" required />
+        <input type="email" name="email" placeholder="Email" required />
+        <input type="text" name="instagram" placeholder="Usuario de Instagram (@usuario)" required />
+        <select name="tipo_contenido" required>
+          <option value="" disabled selected>Tipo de contenido</option>
+          <option>Cocina mexicana</option>
+          <option>Repostería</option>
+          <option>Panadería</option>
+          <option>Coctelería</option>
+          <option>Comida saludable</option>
+          <option>Otro</option>
+        </select>
+        <select name="seguidores" required>
+          <option value="" disabled selected>Número de seguidores aproximado</option>
+          <option>1K – 10K</option>
+          <option>10K – 50K</option>
+          <option>50K – 200K</option>
+          <option>200K+</option>
+        </select>
+        <button type="submit" class="btn btn-gold">Enviar solicitud</button>
+      </form>
+      <p class="modal-note">Solo aceptamos 3 creadores por mes · Sin compromiso</p>
+    </div>
+    <div class="modal-success" id="modalSuccess">
+      <p class="label" style="margin-bottom:0.5rem;">Solicitud enviada</p>
+      <h2 class="modal-title">¡Gracias!</h2>
+      <p>Recibimos tu solicitud. Si hay fit con tu perfil, te contactamos en menos de 48 horas vía email o Instagram.</p>
+    </div>
+  </div>
+</div>
 
 <!-- ─── NAV ─── -->
 <nav id="navbar">
@@ -916,8 +1185,9 @@
       <li><a href="#problem">La realidad</a></li>
       <li><a href="#process">Proceso</a></li>
       <li><a href="#model">Modelo</a></li>
+      <li><a href="#faq">FAQ</a></li>
     </ul>
-    <a href="https://instagram.com/oryx.company" target="_blank" rel="noopener" class="nav-cta">DM en Instagram</a>
+    <button class="nav-cta js-open-modal">Solicitar evaluación</button>
     <button class="hamburger" id="hamburger" aria-label="Abrir menú" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
@@ -930,13 +1200,13 @@
   <a href="#manifesto" class="drawer-link">Propuesta</a>
   <a href="#process" class="drawer-link">Proceso</a>
   <a href="#model" class="drawer-link">Modelo</a>
+  <a href="#faq" class="drawer-link">FAQ</a>
   <a href="#cta" class="drawer-link">Contacto</a>
 </div>
 
 <!-- ─── HERO ─── -->
 <section id="hero">
   <div class="hero-sticky-wrap">
-    <!-- Parallax layers — cada uno se mueve a distinta velocidad vía JS -->
     <div class="hero-parallax-layer" id="heroParallaxSlow">
       <div class="hero-orb hero-orb-1"></div>
       <div class="hero-orb hero-orb-2"></div>
@@ -952,15 +1222,16 @@
     <div class="hero-content" id="heroHeader">
       <p class="hero-eyebrow">Para creadores gastronómicos</p>
       <h1 class="hero-title">
-        Tu conocimiento tiene<br>
-        <em>más valor</em> del que crees
+        Lanza tu infoproducto<br>
+        gastronómico en 30 días.<br>
+        <em>Sin invertir un peso.</em>
       </h1>
       <p class="hero-sub">
-        Convertimos lo que ya sabes en un infoproducto de alta calidad — contigo, no para ti. Sin inversión de tu parte.
+        Para creadores con audiencia comprometida que quieren monetizar su conocimiento.
       </p>
       <div class="hero-actions">
-        <a href="https://instagram.com/oryx.company" target="_blank" rel="noopener" class="btn btn-gold">Quiero saber más</a>
-        <a href="#process" class="btn btn-outline">Cómo funciona</a>
+        <button class="btn btn-gold js-open-modal">Solicitar evaluación gratuita</button>
+        <a href="#process" class="btn btn-outline">Ver cómo funciona</a>
       </div>
     </div>
 
@@ -996,6 +1267,11 @@
     </div>
   </div>
 </section>
+
+<!-- ─── URGENCY BAR ─── -->
+<div class="urgency-bar">
+  Solo aceptamos 3 creadores por mes
+</div>
 
 <!-- ─── PROBLEM ─── -->
 <section id="problem">
@@ -1072,6 +1348,37 @@
         </div>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- ─── NO ES PARA TI SI ─── -->
+<section id="notforyou">
+  <div class="notforyou-inner">
+    <div class="reveal">
+      <p class="label">Para ser honestos</p>
+      <h2 class="serif" style="font-size:clamp(2rem,4vw,3.2rem);font-weight:400;line-height:1.2;margin-bottom:1.2rem;">
+        No es para ti <em style="font-style:italic;color:var(--gold)">si…</em>
+      </h2>
+      <div class="rule"></div>
+      <p style="font-size:0.95rem;color:rgba(245,240,232,0.55);line-height:1.85;max-width:420px;">
+        Preferimos ser directos. Trabajar con el creador equivocado no es bueno para ninguno de los dos.
+      </p>
+    </div>
+
+    <ul class="notforyou-list reveal reveal-d2">
+      <li class="notforyou-item">
+        <span class="notforyou-x">✕</span>
+        No tienes audiencia con la que hayas construido confianza real
+      </li>
+      <li class="notforyou-item">
+        <span class="notforyou-x">✕</span>
+        Solo quieres resultados rápidos sin involucrarte en el proceso
+      </li>
+      <li class="notforyou-item">
+        <span class="notforyou-x">✕</span>
+        No estás dispuesto a ser la cara del producto
+      </li>
+    </ul>
   </div>
 </section>
 
@@ -1302,9 +1609,83 @@
     <p class="piloto-sub reveal reveal-d2">
       Estamos eligiendo al primer creador gastronómico con quien construir y documentar el proceso completo. Si tienes audiencia y conocimiento, este lugar podría ser tuyo.
     </p>
-    <a href="https://instagram.com/oryx.company" target="_blank" rel="noopener" class="btn btn-gold reveal reveal-d3">
+    <button class="btn btn-gold reveal reveal-d3 js-open-modal">
       Quiero ser el primero
-    </a>
+    </button>
+  </div>
+</section>
+
+<!-- ─── FAQ ─── -->
+<section id="faq">
+  <div class="faq-inner">
+    <div class="reveal" style="text-align:center;margin-bottom:0;">
+      <p class="label">Dudas comunes</p>
+      <h2 class="serif" style="font-size:clamp(2rem,4vw,3rem);font-weight:400;line-height:1.2;">
+        Preguntas <em style="font-style:italic;color:var(--gold)">frecuentes</em>
+      </h2>
+    </div>
+
+    <div class="faq-list">
+      <div class="faq-item reveal">
+        <button class="faq-q">
+          ¿Cuánto voy a ganar realmente?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            Depende del tamaño y la temperatura de tu audiencia. No prometemos cifras porque cada creador y cada nicho son distintos. Lo que sí podemos decir: nuestro modelo de revenue share significa que tenemos el mismo incentivo que tú para maximizar las ventas. Antes del lanzamiento, te presentamos proyecciones realistas basadas en el análisis de tu audiencia.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item reveal">
+        <button class="faq-q">
+          ¿Qué pasa si el lanzamiento no funciona?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            Si el lanzamiento no genera ventas, tú no pierdes nada — no hay inversión de tu parte. Nosotros absorbemos el costo de producción. Por eso somos muy selectivos con los creadores que elegimos: antes de comprometernos, hacemos un análisis profundo para confirmar que hay condiciones reales para el éxito.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item reveal">
+        <button class="faq-q">
+          ¿Mi audiencia va a comprar?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            Si tu audiencia confía en ti, aprende contigo y sigue tu contenido activamente, tiene el potencial de comprar. El error más común es pensar que se necesitan millones de seguidores. Una comunidad pequeña y comprometida convierte mejor que una audiencia masiva y fría. Eso es exactamente lo que evaluamos en el diagnóstico inicial.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item reveal">
+        <button class="faq-q">
+          ¿Cómo funciona el modelo de revenue share?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            Oryx produce y lanza el infoproducto a costo cero para ti. A cambio, acordamos de antemano un porcentaje de las ventas que recibimos como compensación. El porcentaje exacto se define caso por caso según el proyecto, la audiencia y el producto. Todo queda en un acuerdo claro antes de empezar — sin sorpresas.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item reveal">
+        <button class="faq-q">
+          ¿Pierdo el control de mi marca?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            No. Tu marca, tu nombre y tu audiencia son y siguen siendo tuyos. Oryx es el equipo detrás del telón — producimos, estrategiamos y ejecutamos, pero tú eres siempre la cara del producto. Todas las decisiones creativas pasan por tu aprobación. Nuestro trabajo es hacer que tú te veas increíble, no sustituirte.
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -1320,10 +1701,13 @@
     <p class="cta-sub reveal reveal-d2">
       Sin inversión. Sin riesgo. Solo tu conocimiento convertido en ingresos reales — en 30 días.
     </p>
-    <a href="https://instagram.com/oryx.company" target="_blank" rel="noopener" class="btn btn-gold reveal reveal-d3">
-      Escríbenos en Instagram
+    <button class="btn btn-gold reveal reveal-d3 js-open-modal">
+      Solicitar evaluación gratuita
+    </button>
+    <a href="https://instagram.com/oryx.company" target="_blank" rel="noopener" class="cta-secondary-link reveal reveal-d4">
+      Prefiero escribir por Instagram @oryx.company
     </a>
-    <p class="cta-note reveal reveal-d4">Trabajamos con un número limitado de creadores por ciclo de lanzamiento</p>
+    <p class="cta-note reveal reveal-d5">Solo aceptamos 3 creadores por mes</p>
   </div>
 </section>
 
@@ -1345,8 +1729,8 @@
   }, { passive: true });
 
   // Hamburger / drawer
-  const hamburger = document.getElementById('hamburger');
-  const drawer    = document.getElementById('drawer');
+  const hamburger  = document.getElementById('hamburger');
+  const drawer     = document.getElementById('drawer');
   const drawerLinks = document.querySelectorAll('.drawer-link');
 
   function setDrawer(open) {
@@ -1359,15 +1743,76 @@
   hamburger.addEventListener('click', () => setDrawer(!drawer.classList.contains('open')));
   drawerLinks.forEach(l => l.addEventListener('click', () => setDrawer(false)));
 
+  // ─── Modal ───
+  const modal      = document.getElementById('modal');
+  const modalClose = document.getElementById('modalClose');
+  const evalForm   = document.getElementById('evalForm');
+  const modalFormEl = document.getElementById('modalForm');
+  const modalSuccess = document.getElementById('modalSuccess');
+
+  function openModal() {
+    modal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModal() {
+    modal.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  document.querySelectorAll('.js-open-modal').forEach(btn => {
+    btn.addEventListener('click', openModal);
+  });
+  modalClose.addEventListener('click', closeModal);
+  modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+  // Formspree async submit
+  evalForm.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const data = new FormData(evalForm);
+    try {
+      const res = await fetch(evalForm.action, {
+        method: 'POST',
+        body: data,
+        headers: { 'Accept': 'application/json' }
+      });
+      if (res.ok) {
+        modalFormEl.style.display = 'none';
+        modalSuccess.style.display = 'block';
+      } else {
+        alert('Hubo un error al enviar. Escríbenos directamente a @oryx.company en Instagram.');
+      }
+    } catch {
+      alert('Hubo un error al enviar. Escríbenos directamente a @oryx.company en Instagram.');
+    }
+  });
+
+  // ─── FAQ Accordion ───
+  document.querySelectorAll('.faq-q').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item   = btn.closest('.faq-item');
+      const answer = item.querySelector('.faq-a');
+      const isOpen = btn.classList.contains('open');
+
+      // Close all
+      document.querySelectorAll('.faq-q').forEach(b => {
+        b.classList.remove('open');
+        b.closest('.faq-item').querySelector('.faq-a').style.maxHeight = null;
+      });
+
+      if (!isOpen) {
+        btn.classList.add('open');
+        answer.style.maxHeight = answer.scrollHeight + 'px';
+      }
+    });
+  });
+
   // ─── Scroll Reveal con stagger automático ───
-  // Aplica .reveal a todos los hijos directos de listas/grids que no lo tengan,
-  // asignando delays escalonados automáticamente.
   const autoStaggerSelectors = [
     '.pain-list   > .pain-item',
     '.value-grid  > .value-card',
     '.steps       > .step',
     '.includes-grid > .include-item',
-    '.track-wrap',
   ];
   autoStaggerSelectors.forEach(sel => {
     document.querySelectorAll(sel).forEach((el, i) => {
@@ -1403,32 +1848,22 @@
 
   function updateContainerScroll() {
     if (!heroSection || !heroCard) return;
-
     const rect      = heroSection.getBoundingClientRect();
     const h         = heroSection.offsetHeight;
     const vh        = window.innerHeight;
-
-    // p: 0 al entrar el hero, 1 al terminar su scroll zone
     const scrolled  = -rect.top;
     const maxScroll = h - vh;
     const p         = Math.max(0, Math.min(1, scrolled / Math.max(maxScroll, 1)));
 
-    // ── ContainerScroll (tarjeta 3D) ──
     const mobile     = isMob();
     const scaleStart = mobile ? 0.7 : 1.05;
     const scaleEnd   = mobile ? 0.9 : 1.0;
 
     heroCard.style.transform =
       `rotateX(${20 * (1 - p)}deg) scale(${scaleStart + (scaleEnd - scaleStart) * p})`;
-
     if (heroHeader) heroHeader.style.transform = `translateY(${-100 * p}px)`;
-
-    // ── Parallax de fondo: 3 capas a velocidades distintas ──
-    // Capa lenta (orbs grandes) — se mueven hacia arriba más despacio que el scroll
     if (heroParallaxSlow) heroParallaxSlow.style.transform = `translateY(${-50 * p}px)`;
-    // Capa media (orb pequeño) — velocidad intermedia
     if (heroParallaxFast) heroParallaxFast.style.transform = `translateY(${-120 * p}px)`;
-    // Cuadrícula — se desvanece conforme se scrollea
     if (heroGrid) heroGrid.style.opacity = String(1 - p * 1.4);
   }
 
