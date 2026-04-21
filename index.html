@@ -273,22 +273,18 @@
       animation: fadeUp 0.8s 1s forwards;
     }
 
-    /* Hero stats bar */
+    /* Stats bar */
     .hero-stats {
-      position: relative;
-      z-index: 1;
-      margin-top: 2.4rem;
-      padding-top: 1.8rem;
-      border-top: 0.5px solid var(--border);
       display: flex;
       justify-content: center;
       gap: 0;
-      opacity: 0;
-      animation: fadeUp 0.8s 1.2s forwards;
+      background: var(--off-black);
+      border-bottom: 0.5px solid var(--border);
+      padding: 2.2rem 0;
     }
     .hero-stat {
       flex: 1;
-      max-width: 200px;
+      max-width: 220px;
       padding: 0 2rem;
       border-right: 0.5px solid var(--border);
       text-align: center;
@@ -1112,8 +1108,8 @@
       .nav-links-inline { display: none; }
       .hamburger { display: flex; }
       .hero-sticky-wrap { padding: 8rem 1.5rem 5rem; }
-      .hero-stats { flex-direction: column; gap: 1.5rem; align-items: center; }
-      .hero-stat { border-right: none; border-bottom: 0.5px solid var(--border); padding: 1rem 0; width: 100%; }
+      .hero-stats { flex-direction: column; gap: 0; align-items: stretch; }
+      .hero-stat { border-right: none; border-bottom: 0.5px solid var(--border); padding: 1.2rem 0; max-width: 100%; }
       .hero-stat:last-child { border-bottom: none; }
       .problem-inner { grid-template-columns: 1fr; gap: 3.5rem; padding: 5rem 1.5rem; }
       .notforyou-inner { padding: 5rem 1.5rem; }
@@ -1235,21 +1231,6 @@
       </div>
     </div>
 
-    <div class="hero-stats" id="heroStats">
-      <div class="hero-stat">
-        <strong>30</strong>
-        <span>Días al lanzamiento</span>
-      </div>
-      <div class="hero-stat">
-        <strong>$0</strong>
-        <span>Inversión del creador</span>
-      </div>
-      <div class="hero-stat">
-        <strong>100%</strong>
-        <span>Producción a cargo nuestro</span>
-      </div>
-    </div>
-
     <div class="hero-card-wrap">
       <div class="hero-card-inner" id="heroCard">
         <img
@@ -1271,6 +1252,22 @@
 <!-- ─── URGENCY BAR ─── -->
 <div class="urgency-bar">
   Solo aceptamos 3 creadores por mes
+</div>
+
+<!-- ─── STATS BAR ─── -->
+<div class="hero-stats">
+  <div class="hero-stat">
+    <strong>30</strong>
+    <span>Días al lanzamiento</span>
+  </div>
+  <div class="hero-stat">
+    <strong>$0</strong>
+    <span>Inversión del creador</span>
+  </div>
+  <div class="hero-stat">
+    <strong>100%</strong>
+    <span>Producción a cargo nuestro</span>
+  </div>
 </div>
 
 <!-- ─── PROBLEM ─── -->
