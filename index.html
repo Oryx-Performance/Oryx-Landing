@@ -94,6 +94,16 @@
       border-color: var(--gold-dim);
       color: var(--gold);
     }
+    .hero-link-secondary {
+      font-size: 0.78rem;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      color: rgba(245,240,232,0.5);
+      text-transform: uppercase;
+      transition: color 0.3s ease;
+      align-self: center;
+    }
+    .hero-link-secondary:hover { color: var(--gold); }
 
     /* ─── SCROLL REVEAL ─── */
     .reveal {
@@ -1217,6 +1227,7 @@
 
     <div class="hero-content" id="heroHeader">
       <p class="hero-eyebrow">Para creadores gastronómicos</p>
+      <div class="urgency-bar">Solo aceptamos 3 creadores por mes</div>
       <h1 class="hero-title">
         Lanza tu infoproducto<br>
         gastronómico en 30 días.<br>
@@ -1227,17 +1238,14 @@
       </p>
       <div class="hero-actions">
         <button class="btn btn-gold js-open-modal">Solicitar evaluación gratuita</button>
-        <a href="#process" class="btn btn-outline">Ver cómo funciona</a>
+        <a href="#process" class="hero-link-secondary">Ver cómo funciona →</a>
       </div>
     </div>
 
   </div>
 </section>
 
-<!-- ─── URGENCY BAR ─── -->
-<div class="urgency-bar">
-  Solo aceptamos 3 creadores por mes
-</div>
+
 
 <!-- ─── STATS BAR ─── -->
 <div class="hero-stats">
