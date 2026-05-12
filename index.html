@@ -1481,6 +1481,67 @@
   </div>
 </div>
 
+<!-- ─── CALCULADORA ─── -->
+<section id="calculadora">
+  <div class="calc-inner">
+    <div class="calc-header reveal">
+      <p class="label">Calcula tu potencial</p>
+      <h2>¿Cuánto podrías ganar<br>con tu audiencia?</h2>
+      <p>Ingresa tus datos y calcula tu potencial de ingresos digitales.</p>
+    </div>
+
+    <div class="calc-body">
+      <div class="calc-inputs reveal">
+        <div class="calc-field">
+          <label>Seguidores <span id="val-seg">20,000</span></label>
+          <input type="range" class="calc-slider" id="sl-seg" min="1000" max="500000" step="1000" value="20000">
+        </div>
+        <div class="calc-field">
+          <label>Likes promedio por post <span id="val-likes">800</span></label>
+          <input type="range" class="calc-slider" id="sl-likes" min="50" max="50000" step="50" value="800">
+        </div>
+        <div class="calc-field">
+          <label>Precio del infoproducto (MXN) <span id="val-precio">$2,500</span></label>
+          <input type="range" class="calc-slider" id="sl-precio" min="500" max="15000" step="100" value="2500">
+        </div>
+        <div class="calc-info-row">
+          <span>% de audiencia que compra (promedio de mercado)</span>
+          <span>1.5%</span>
+        </div>
+      </div>
+
+      <div class="calc-results reveal reveal-d2">
+        <div class="calc-card main">
+          <div class="calc-card-label">Tu ingreso estimado del lanzamiento</div>
+          <div class="calc-card-value" id="res-ingreso">$0</div>
+          <div class="calc-card-sub">MXN · 60% del ingreso bruto</div>
+        </div>
+        <div class="calc-card">
+          <div class="calc-card-label">Compradores estimados</div>
+          <div class="calc-card-value" id="res-compradores">0</div>
+        </div>
+        <div class="calc-card">
+          <div class="calc-card-label">Engagement de tu audiencia</div>
+          <div class="calc-card-value" id="res-engagement">0%</div>
+          <div class="calc-card-sub" id="res-eng-label">—</div>
+        </div>
+        <div class="calc-card full">
+          <div class="calc-card-label">Ingreso anual si agregas membresía</div>
+          <div class="calc-card-value" id="res-membresia">$0</div>
+          <div class="calc-card-sub">Estimado con membresía de $299/mes</div>
+        </div>
+      </div>
+    </div>
+
+    <p class="calc-note reveal">Estimación conservadora basada en promedios del mercado LATAM. Los resultados reales dependen de la calidad de tu audiencia y la ejecución del lanzamiento.</p>
+    <div class="calc-cta reveal reveal-d2">
+      <button class="btn btn-gold js-open-modal" style="font-size:0.78rem;letter-spacing:0.13em;padding:1.1rem 2.6rem;">
+        QUIERO ESTE RESULTADO — SOLICITAR EVALUACIÓN GRATUITA
+      </button>
+    </div>
+  </div>
+</section>
+
 <!-- ─── MERCADO ─── -->
 <section id="mercado">
   <div class="mercado-inner">
@@ -1850,67 +1911,6 @@
     <button class="btn btn-gold reveal reveal-d3 js-open-modal">
       Quiero ser el primero
     </button>
-  </div>
-</section>
-
-<!-- ─── CALCULADORA ─── -->
-<section id="calculadora">
-  <div class="calc-inner">
-    <div class="calc-header reveal">
-      <p class="label">Calcula tu potencial</p>
-      <h2>¿Cuánto podrías ganar<br>con tu audiencia?</h2>
-      <p>Ingresa tus datos y calcula tu potencial de ingresos digitales.</p>
-    </div>
-
-    <div class="calc-body">
-      <div class="calc-inputs reveal">
-        <div class="calc-field">
-          <label>Seguidores <span id="val-seg">20,000</span></label>
-          <input type="range" class="calc-slider" id="sl-seg" min="1000" max="500000" step="1000" value="20000">
-        </div>
-        <div class="calc-field">
-          <label>Likes promedio por post <span id="val-likes">800</span></label>
-          <input type="range" class="calc-slider" id="sl-likes" min="50" max="50000" step="50" value="800">
-        </div>
-        <div class="calc-field">
-          <label>Precio del infoproducto (MXN) <span id="val-precio">$2,500</span></label>
-          <input type="range" class="calc-slider" id="sl-precio" min="500" max="15000" step="100" value="2500">
-        </div>
-        <div class="calc-info-row">
-          <span>% de audiencia que compra (promedio de mercado)</span>
-          <span>1.5%</span>
-        </div>
-      </div>
-
-      <div class="calc-results reveal reveal-d2">
-        <div class="calc-card main">
-          <div class="calc-card-label">Tu ingreso estimado del lanzamiento</div>
-          <div class="calc-card-value" id="res-ingreso">$0</div>
-          <div class="calc-card-sub">MXN · 60% del ingreso bruto</div>
-        </div>
-        <div class="calc-card">
-          <div class="calc-card-label">Compradores estimados</div>
-          <div class="calc-card-value" id="res-compradores">0</div>
-        </div>
-        <div class="calc-card">
-          <div class="calc-card-label">Engagement de tu audiencia</div>
-          <div class="calc-card-value" id="res-engagement">0%</div>
-          <div class="calc-card-sub" id="res-eng-label">—</div>
-        </div>
-        <div class="calc-card full">
-          <div class="calc-card-label">Ingreso anual si agregas membresía</div>
-          <div class="calc-card-value" id="res-membresia">$0</div>
-          <div class="calc-card-sub">Estimado con membresía de $299/mes</div>
-        </div>
-      </div>
-    </div>
-
-    <p class="calc-note reveal">Estimación conservadora basada en promedios del mercado LATAM. Los resultados reales dependen de la calidad de tu audiencia y la ejecución del lanzamiento.</p>
-    <div class="calc-cta reveal reveal-d2">
-      <button class="btn btn-gold js-open-modal" style="font-size:0.78rem;letter-spacing:0.13em;padding:1.1rem 2.6rem;">
-        QUIERO ESTE RESULTADO — SOLICITAR EVALUACIÓN GRATUITA
-      </button>
-    </div>
   </div>
 </section>
 
