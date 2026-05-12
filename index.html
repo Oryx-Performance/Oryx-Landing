@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Oryx — Agencia mexicana de lanzamiento de infoproductos para creadores gastronómicos. Revenue share. Sin inversión. Lanzamiento en 30 días." />
+  <meta name="description" content="Oryx — Agencia mexicana de lanzamiento de infoproductos para creadores gastronómicos. Fee de activación + revenue share. Lanzamiento en 30 días." />
   <title>Oryx · Para Creadores Gastronómicos</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -1106,6 +1106,219 @@
       50%       { opacity: 0.7; }
     }
 
+    /* ─── MERCADO ─── */
+    #mercado {
+      background: var(--off-black);
+      border-top: 0.5px solid var(--border);
+      border-bottom: 0.5px solid var(--border);
+    }
+    .mercado-inner {
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 7rem 4rem;
+      text-align: center;
+    }
+    .mercado-header { margin-bottom: 4rem; }
+    .mercado-header h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 400;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+    .mercado-sub {
+      font-size: 0.95rem;
+      color: var(--gray-light);
+      max-width: 540px;
+      margin: 0 auto;
+      line-height: 1.75;
+    }
+    .mercado-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.5px;
+      background: var(--border);
+      border: 0.5px solid var(--border);
+      margin-bottom: 1.8rem;
+    }
+    .mercado-stat {
+      background: var(--black);
+      padding: 3rem 2rem;
+      text-align: center;
+      transition: background 0.3s;
+    }
+    .mercado-stat:hover { background: var(--off-black); }
+    .mercado-stat strong {
+      display: block;
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.4rem, 5vw, 3.6rem);
+      color: var(--gold);
+      line-height: 1;
+      margin-bottom: 0.6rem;
+    }
+    .mercado-stat span {
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gray);
+      line-height: 1.55;
+    }
+    .mercado-source {
+      font-size: 0.68rem;
+      letter-spacing: 0.08em;
+      color: rgba(122,117,112,0.42);
+    }
+
+    /* ─── CALCULADORA ─── */
+    #calculadora {
+      background: var(--black);
+      border-top: 0.5px solid var(--border);
+    }
+    .calc-inner {
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 7rem 4rem;
+    }
+    .calc-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+    .calc-header h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 400;
+      line-height: 1.2;
+      margin-bottom: 0.8rem;
+    }
+    .calc-header p {
+      font-size: 0.95rem;
+      color: var(--gray-light);
+      max-width: 460px;
+      margin: 0 auto;
+    }
+    .calc-body {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+    .calc-inputs {
+      display: flex;
+      flex-direction: column;
+      gap: 2.4rem;
+    }
+    .calc-field label {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.78rem;
+      color: var(--gray-light);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 0.9rem;
+    }
+    .calc-field label span {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      color: var(--gold);
+      font-weight: 400;
+      text-transform: none;
+      letter-spacing: 0;
+    }
+    .calc-slider {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 100%;
+      height: 1px;
+      background: var(--border);
+      outline: none;
+      cursor: pointer;
+    }
+    .calc-slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: var(--gold);
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+    .calc-slider::-webkit-slider-thumb:hover { transform: scale(1.25); }
+    .calc-slider::-moz-range-thumb {
+      width: 16px; height: 16px;
+      border-radius: 50%;
+      background: var(--gold);
+      cursor: pointer;
+      border: none;
+    }
+    .calc-info-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.85rem 1rem;
+      background: rgba(201,168,76,0.04);
+      border: 0.5px solid var(--border);
+      font-size: 0.78rem;
+      color: var(--gray);
+    }
+    .calc-info-row span:last-child { color: var(--gold); font-weight: 500; }
+    .calc-results {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.5px;
+      background: var(--border);
+      border: 0.5px solid var(--border);
+      align-content: start;
+    }
+    .calc-card {
+      background: var(--off-black);
+      padding: 1.8rem 1.6rem;
+      transition: background 0.3s;
+    }
+    .calc-card:hover { background: var(--dark); }
+    .calc-card.main {
+      grid-column: 1 / -1;
+      background: var(--black);
+      border-bottom: 0.5px solid var(--border);
+      text-align: center;
+      padding: 2.4rem 2rem;
+    }
+    .calc-card.full { grid-column: 1 / -1; }
+    .calc-card-label {
+      font-size: 0.62rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 0.6rem;
+    }
+    .calc-card-value {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      color: var(--gold);
+      line-height: 1;
+      transition: all 0.3s ease;
+    }
+    .calc-card.main .calc-card-value { font-size: clamp(2.6rem, 5vw, 3.8rem); }
+    .calc-card-sub {
+      font-size: 0.7rem;
+      color: var(--gray);
+      margin-top: 0.35rem;
+      letter-spacing: 0.04em;
+    }
+    .calc-note {
+      margin-top: 2rem;
+      font-size: 0.72rem;
+      color: rgba(122,117,112,0.48);
+      line-height: 1.7;
+      letter-spacing: 0.03em;
+      text-align: center;
+      max-width: 640px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .calc-cta { margin-top: 2.8rem; text-align: center; }
+
     /* ─── RESPONSIVE ─── */
     @media (max-width: 1024px) {
       .manifesto-grid,
@@ -1140,6 +1353,10 @@
       footer { padding: 2rem 1.5rem; }
       .footer-inner { flex-direction: column; align-items: flex-start; gap: 0.8rem; }
       .modal-box { padding: 2rem 1.5rem; }
+      .mercado-inner { padding: 5rem 1.5rem; }
+      .mercado-grid { grid-template-columns: 1fr; }
+      .calc-inner { padding: 5rem 1.5rem; }
+      .calc-body { grid-template-columns: 1fr; gap: 2.5rem; }
     }
   </style>
   <script defer src="/_vercel/insights/script.js"></script>
@@ -1231,12 +1448,10 @@
 
     <div class="hero-content" id="heroHeader">
       <h1 class="hero-title">
-        Lanza tu infoproducto<br>
-        gastronómico en 30 días.<br>
-        <em>Sin invertir un peso.</em>
+        La única agencia de lanzamiento creada exclusivamente para <em>creadores gastronómicos.</em>
       </h1>
       <p class="hero-sub">
-        Para creadores con audiencia comprometida que quieren monetizar su conocimiento.
+        Lanza tu infoproducto en 30 días. Sin invertir un peso.
       </p>
       <div class="hero-actions">
         <button class="btn btn-gold js-open-modal">Solicitar evaluación gratuita</button>
@@ -1265,6 +1480,36 @@
     <span>Producción a cargo nuestro</span>
   </div>
 </div>
+
+<!-- ─── MERCADO ─── -->
+<section id="mercado">
+  <div class="mercado-inner">
+    <div class="mercado-header reveal">
+      <p class="label">El momento es ahora</p>
+      <h2>El nicho de infoproductos gastronómicos<br>en español está <em style="font-style:italic;color:var(--gold)">vacío.</em></h2>
+      <p class="mercado-sub">La ventana es de 12 a 18 meses. Los creadores que lancen primero van a dominar el mercado.</p>
+    </div>
+    <div class="mercado-grid reveal reveal-d2">
+      <div class="mercado-stat">
+        <strong>$38.5B</strong>
+        <span>TAM Creator Economy LATAM 2025</span>
+      </div>
+      <div class="mercado-stat">
+        <strong>+54%</strong>
+        <span>Crecimiento de creadores en México 2024</span>
+      </div>
+      <div class="mercado-stat">
+        <strong>8.7M</strong>
+        <span>Compradores de infoproductos en Hotmart LATAM</span>
+      </div>
+      <div class="mercado-stat">
+        <strong>19.7%</strong>
+        <span>Crecimiento anual proyectado del sector</span>
+      </div>
+    </div>
+    <p class="mercado-source reveal reveal-d3">Fuentes: Goldman Sachs, Hotmart Bee 2025, Mobility Foresights</p>
+  </div>
+</section>
 
 <!-- ─── PROBLEM ─── -->
 <section id="problem">
@@ -1337,7 +1582,7 @@
         <div class="value-card">
           <div class="value-num">03</div>
           <div class="value-title">Juntos, los resultados</div>
-          <div class="value-desc">Lanzamiento en 30 días. Revenue share. Si tú no ganas, nosotros tampoco.</div>
+          <div class="value-desc">Lanzamiento en 30 días. Fee de activación + revenue share — si tú no ganas, nosotros tampoco.</div>
         </div>
       </div>
     </div>
@@ -1561,7 +1806,7 @@
         </div>
         <div class="model-row">
           <span class="model-label">Modelo de pago</span>
-          <span class="model-value accent">Revenue Share</span>
+          <span class="model-value accent">Fee + Revenue Share</span>
         </div>
       </div>
     </div>
@@ -1572,10 +1817,10 @@
         Sin riesgo.<br><em style="font-style:italic;color:var(--gold)">Socios de verdad.</em>
       </h2>
       <div class="rule"></div>
-      <p>Nos alejamos del modelo tradicional de agencia. No cobramos por hora, ni por proyecto. Nos convertimos en tus socios — y solo ganamos cuando tú ganas.</p>
-      <p>Esto nos obliga a comprometernos con tu éxito al mismo nivel que con el nuestro.</p>
+      <p>Trabajamos con un fee de activación inicial que cubre toda la producción, más un porcentaje de revenue share sobre las ventas del lanzamiento. Sin inversión de riesgo — si el lanzamiento no genera ingresos, el revenue share es cero.</p>
+      <p>Esto nos alinea completamente con tu éxito.</p>
       <ul class="check-list">
-        <li>Sin pago anticipado ni inversión inicial de tu parte</li>
+        <li>Fee de activación que cubre toda la producción</li>
         <li>Producimos el 100% del infoproducto y sistema de ventas</li>
         <li>Lanzamiento garantizado en 30 días calendario</li>
         <li>Soporte completo durante y después del lanzamiento</li>
@@ -1605,6 +1850,67 @@
     <button class="btn btn-gold reveal reveal-d3 js-open-modal">
       Quiero ser el primero
     </button>
+  </div>
+</section>
+
+<!-- ─── CALCULADORA ─── -->
+<section id="calculadora">
+  <div class="calc-inner">
+    <div class="calc-header reveal">
+      <p class="label">Calcula tu potencial</p>
+      <h2>¿Cuánto podrías ganar<br>con tu audiencia?</h2>
+      <p>Ingresa tus datos y calcula tu potencial de ingresos digitales.</p>
+    </div>
+
+    <div class="calc-body">
+      <div class="calc-inputs reveal">
+        <div class="calc-field">
+          <label>Seguidores <span id="val-seg">20,000</span></label>
+          <input type="range" class="calc-slider" id="sl-seg" min="1000" max="500000" step="1000" value="20000">
+        </div>
+        <div class="calc-field">
+          <label>Likes promedio por post <span id="val-likes">800</span></label>
+          <input type="range" class="calc-slider" id="sl-likes" min="50" max="50000" step="50" value="800">
+        </div>
+        <div class="calc-field">
+          <label>Precio del infoproducto (MXN) <span id="val-precio">$2,500</span></label>
+          <input type="range" class="calc-slider" id="sl-precio" min="500" max="15000" step="100" value="2500">
+        </div>
+        <div class="calc-info-row">
+          <span>% de audiencia que compra (promedio de mercado)</span>
+          <span>1.5%</span>
+        </div>
+      </div>
+
+      <div class="calc-results reveal reveal-d2">
+        <div class="calc-card main">
+          <div class="calc-card-label">Tu ingreso estimado del lanzamiento</div>
+          <div class="calc-card-value" id="res-ingreso">$0</div>
+          <div class="calc-card-sub">MXN · 60% del ingreso bruto</div>
+        </div>
+        <div class="calc-card">
+          <div class="calc-card-label">Compradores estimados</div>
+          <div class="calc-card-value" id="res-compradores">0</div>
+        </div>
+        <div class="calc-card">
+          <div class="calc-card-label">Engagement de tu audiencia</div>
+          <div class="calc-card-value" id="res-engagement">0%</div>
+          <div class="calc-card-sub" id="res-eng-label">—</div>
+        </div>
+        <div class="calc-card full">
+          <div class="calc-card-label">Ingreso anual si agregas membresía</div>
+          <div class="calc-card-value" id="res-membresia">$0</div>
+          <div class="calc-card-sub">Estimado con membresía de $299/mes</div>
+        </div>
+      </div>
+    </div>
+
+    <p class="calc-note reveal">Estimación conservadora basada en promedios del mercado LATAM. Los resultados reales dependen de la calidad de tu audiencia y la ejecución del lanzamiento.</p>
+    <div class="calc-cta reveal reveal-d2">
+      <button class="btn btn-gold js-open-modal" style="font-size:0.78rem;letter-spacing:0.13em;padding:1.1rem 2.6rem;">
+        QUIERO ESTE RESULTADO — SOLICITAR EVALUACIÓN GRATUITA
+      </button>
+    </div>
   </div>
 </section>
 
@@ -1657,12 +1963,12 @@
 
       <div class="faq-item reveal">
         <button class="faq-q">
-          ¿Cómo funciona el modelo de revenue share?
+          ¿Cómo funciona el modelo de fee + revenue share?
           <span class="faq-icon">+</span>
         </button>
         <div class="faq-a">
           <div class="faq-a-inner">
-            Oryx produce y lanza el infoproducto a costo cero para ti. A cambio, acordamos de antemano un porcentaje de las ventas que recibimos como compensación. El porcentaje exacto se define caso por caso según el proyecto, la audiencia y el producto. Todo queda en un acuerdo claro antes de empezar — sin sorpresas.
+            Oryx trabaja con un fee de activación inicial que cubre toda la producción del infoproducto, landing page, funnels y guiones. Adicionalmente, acordamos un porcentaje de revenue share sobre las ventas del lanzamiento. El porcentaje exacto se define caso por caso. Si el lanzamiento no genera ingresos, el revenue share es cero. Todo queda en un acuerdo claro antes de empezar — sin sorpresas.
           </div>
         </div>
       </div>
@@ -1862,6 +2168,40 @@
 
   window.addEventListener('scroll', updateContainerScroll, { passive: true });
   updateContainerScroll();
+
+  // ─── Calculadora ───
+  function calcUpdate() {
+    const seg    = +document.getElementById('sl-seg').value;
+    const likes  = +document.getElementById('sl-likes').value;
+    const precio = +document.getElementById('sl-precio').value;
+
+    document.getElementById('val-seg').textContent    = seg.toLocaleString('es-MX');
+    document.getElementById('val-likes').textContent  = likes.toLocaleString('es-MX');
+    document.getElementById('val-precio').textContent = '$' + precio.toLocaleString('es-MX');
+
+    const eng = (likes / seg) * 100;
+    let mult = 1.0, engLabel = 'Normal';
+    if (eng > 3)      { mult = 1.3; engLabel = 'Alta ↑'; }
+    else if (eng < 1) { mult = 0.7; engLabel = 'Baja ↓'; }
+
+    const compradores = Math.round(seg * 0.015 * mult);
+    const ingBruto    = compradores * precio;
+    const tuIngreso   = ingBruto * 0.6;
+    const membresia   = tuIngreso + (compradores * 0.3 * 299 * 12);
+
+    const fmt = n => '$' + Math.round(n).toLocaleString('es-MX');
+
+    document.getElementById('res-ingreso').textContent    = fmt(tuIngreso);
+    document.getElementById('res-compradores').textContent = compradores.toLocaleString('es-MX');
+    document.getElementById('res-engagement').textContent  = eng.toFixed(1) + '%';
+    document.getElementById('res-eng-label').textContent   = engLabel;
+    document.getElementById('res-membresia').textContent   = fmt(membresia);
+  }
+
+  ['sl-seg', 'sl-likes', 'sl-precio'].forEach(id => {
+    document.getElementById(id).addEventListener('input', calcUpdate);
+  });
+  calcUpdate();
 
   // Smooth scroll
   document.querySelectorAll('a[href^="#"]').forEach(a => {
