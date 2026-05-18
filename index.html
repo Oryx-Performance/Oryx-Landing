@@ -1319,6 +1319,83 @@
     }
     .calc-cta { margin-top: 2.8rem; text-align: center; }
 
+    /* Currency selector */
+    .calc-currency-row {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      padding-bottom: 2rem;
+      border-bottom: 0.5px solid var(--border);
+    }
+    .calc-currency-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gray-light);
+      flex-shrink: 0;
+    }
+    .calc-currency-select {
+      background: var(--black);
+      border: 0.5px solid var(--border);
+      color: var(--cream);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.85rem;
+      padding: 0.6rem 1rem;
+      outline: none;
+      cursor: pointer;
+      transition: border-color 0.25s;
+      -webkit-appearance: none;
+      appearance: none;
+      flex: 1;
+      max-width: 240px;
+    }
+    .calc-currency-select:focus { border-color: var(--gold-dim); }
+    .calc-currency-select option { background: var(--off-black); color: var(--cream); }
+
+    /* ─── URGENCY BLOCK ─── */
+    .urgency-block {
+      max-width: 680px;
+      margin: 0 auto 3.5rem;
+      text-align: center;
+    }
+    .urgency-block .label { margin-bottom: 0.8rem; }
+    .urgency-heading {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.5rem, 3.5vw, 2.4rem);
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      color: var(--cream);
+      margin-bottom: 0.8rem;
+      line-height: 1.15;
+    }
+    .urgency-sub {
+      font-size: 0.9rem;
+      color: var(--gray-light);
+      line-height: 1.7;
+      margin-bottom: 2rem;
+    }
+    .urgency-slots {
+      display: flex;
+      gap: 0.6rem;
+      justify-content: center;
+      align-items: center;
+    }
+    .urgency-slot {
+      width: 80px;
+      height: 10px;
+      border-radius: 2px;
+    }
+    .urgency-slot.taken { background: #FF4500; }
+    .urgency-slot.open {
+      background: var(--gold);
+      animation: slotPulse 1.8s ease-in-out infinite;
+    }
+    @keyframes slotPulse {
+      0%, 100% { opacity: 1; }
+      50%       { opacity: 0.35; }
+    }
+
     /* ─── RESPONSIVE ─── */
     @media (max-width: 1024px) {
       .manifesto-grid,
@@ -1451,7 +1528,7 @@
         La única agencia de lanzamiento creada exclusivamente para <em>creadores gastronómicos.</em>
       </h1>
       <p class="hero-sub">
-        Lanza tu infoproducto en 30 días. Sin riesgo — revenue share sobre resultados reales.
+        Para creadores de contenido gastronómico con audiencia activa que quieren monetizar su conocimiento.
       </p>
       <div class="hero-actions">
         <button class="btn btn-gold js-open-modal">Solicitar evaluación gratuita</button>
@@ -1492,6 +1569,17 @@
 
     <div class="calc-body">
       <div class="calc-inputs reveal">
+        <div class="calc-currency-row">
+          <span class="calc-currency-label">Divisa</span>
+          <select class="calc-currency-select" id="sl-currency">
+            <option value="MXN">MXN — Peso mexicano</option>
+            <option value="USD">USD — Dólar estadounidense</option>
+            <option value="EUR">EUR — Euro</option>
+            <option value="ARS">ARS — Peso argentino</option>
+            <option value="COP">COP — Peso colombiano</option>
+            <option value="CLP">CLP — Peso chileno</option>
+          </select>
+        </div>
         <div class="calc-field">
           <label>Seguidores <span id="val-seg">20,000</span></label>
           <input type="range" class="calc-slider" id="sl-seg" min="1000" max="500000" step="1000" value="20000">
@@ -1501,7 +1589,7 @@
           <input type="range" class="calc-slider" id="sl-likes" min="50" max="50000" step="50" value="800">
         </div>
         <div class="calc-field">
-          <label>Precio del infoproducto (MXN) <span id="val-precio">$2,500</span></label>
+          <label>Precio del infoproducto <span id="val-precio">$2,500</span></label>
           <input type="range" class="calc-slider" id="sl-precio" min="500" max="15000" step="100" value="2500">
         </div>
         <div class="calc-info-row">
@@ -1514,7 +1602,7 @@
         <div class="calc-card main">
           <div class="calc-card-label">Tu ingreso estimado del lanzamiento</div>
           <div class="calc-card-value" id="res-ingreso">$0</div>
-          <div class="calc-card-sub">MXN · 60% del ingreso bruto</div>
+          <div class="calc-card-sub" id="res-currency-label">MXN · 60% del ingreso bruto</div>
         </div>
         <div class="calc-card">
           <div class="calc-card-label">Compradores estimados</div>
@@ -1991,6 +2079,16 @@
 <!-- ─── CTA ─── -->
 <section id="cta">
   <div class="cta-inner">
+    <div class="urgency-block reveal">
+      <p class="label">Disponibilidad</p>
+      <h3 class="urgency-heading">Solo quedan 2 lugares<br>disponibles este mes</h3>
+      <p class="urgency-sub">Oryx trabaja con un máximo de 3 creadores por mes para garantizar resultados.</p>
+      <div class="urgency-slots">
+        <div class="urgency-slot taken"></div>
+        <div class="urgency-slot taken"></div>
+        <div class="urgency-slot open"></div>
+      </div>
+    </div>
     <p class="label reveal">¿Listo para lanzar?</p>
     <h2 class="cta-title serif reveal reveal-d1">
       Tu audiencia ya<br>
@@ -2170,33 +2268,63 @@
   updateContainerScroll();
 
   // ─── Calculadora ───
-  function calcUpdate() {
-    const seg    = +document.getElementById('sl-seg').value;
-    const likes  = +document.getElementById('sl-likes').value;
-    const precio = +document.getElementById('sl-precio').value;
+  const CURRENCIES = {
+    MXN: { symbol: '$',  rate: 1,      locale: 'es-MX', priceMin: 500,   priceMax: 15000, priceStep: 100,  priceDefault: 2500,  memPrice: 299   },
+    USD: { symbol: '$',  rate: 1/17.5, locale: 'en-US', priceMin: 29,    priceMax: 860,   priceStep: 5,    priceDefault: 143,   memPrice: 17    },
+    EUR: { symbol: '€',  rate: 1/19.5, locale: 'de-DE', priceMin: 26,    priceMax: 770,   priceStep: 5,    priceDefault: 128,   memPrice: 15    },
+    ARS: { symbol: '$',  rate: 4.8,    locale: 'es-AR', priceMin: 2400,  priceMax: 72000, priceStep: 400,  priceDefault: 12000, memPrice: 1435  },
+    COP: { symbol: '$',  rate: 4.2,    locale: 'es-CO', priceMin: 2100,  priceMax: 63000, priceStep: 350,  priceDefault: 10500, memPrice: 1256  },
+    CLP: { symbol: '$',  rate: 0.052,  locale: 'es-CL', priceMin: 26,    priceMax: 780,   priceStep: 5,    priceDefault: 130,   memPrice: 16    },
+  };
 
-    document.getElementById('val-seg').textContent    = seg.toLocaleString('es-MX');
-    document.getElementById('val-likes').textContent  = likes.toLocaleString('es-MX');
-    document.getElementById('val-precio').textContent = '$' + precio.toLocaleString('es-MX');
+  function calcUpdate() {
+    const currency = document.getElementById('sl-currency').value;
+    const cur      = CURRENCIES[currency];
+    const seg      = +document.getElementById('sl-seg').value;
+    const likes    = +document.getElementById('sl-likes').value;
+    const precioLocal = +document.getElementById('sl-precio').value;
+    const precioMXN   = precioLocal / cur.rate;
+
+    document.getElementById('val-seg').textContent   = seg.toLocaleString('es-MX');
+    document.getElementById('val-likes').textContent = likes.toLocaleString('es-MX');
+    document.getElementById('val-precio').textContent = cur.symbol + precioLocal.toLocaleString(cur.locale);
 
     const eng = (likes / seg) * 100;
     let mult = 1.0, engLabel = 'Normal';
     if (eng > 3)      { mult = 1.3; engLabel = 'Alta ↑'; }
     else if (eng < 1) { mult = 0.7; engLabel = 'Baja ↓'; }
 
-    const compradores = Math.round(seg * 0.015 * mult);
-    const ingBruto    = compradores * precio;
-    const tuIngreso   = ingBruto * 0.6;
-    const membresia   = tuIngreso + (compradores * 0.3 * 299 * 12);
+    // All core math in MXN
+    const compradores  = Math.round(seg * 0.015 * mult);
+    const ingBrutoMXN  = compradores * precioMXN;
+    const tuIngresoMXN = ingBrutoMXN * 0.6;
+    const membresiaMXN = tuIngresoMXN + (compradores * 0.3 * 299 * 12);
 
-    const fmt = n => '$' + Math.round(n).toLocaleString('es-MX');
+    // Convert to selected currency
+    const fmt = n => cur.symbol + Math.round(n * cur.rate).toLocaleString(cur.locale);
 
-    document.getElementById('res-ingreso').textContent    = fmt(tuIngreso);
+    document.getElementById('res-ingreso').textContent     = fmt(tuIngresoMXN);
     document.getElementById('res-compradores').textContent = compradores.toLocaleString('es-MX');
     document.getElementById('res-engagement').textContent  = eng.toFixed(1) + '%';
     document.getElementById('res-eng-label').textContent   = engLabel;
-    document.getElementById('res-membresia').textContent   = fmt(membresia);
+    document.getElementById('res-membresia').textContent   = fmt(membresiaMXN);
+    document.getElementById('res-currency-label').textContent = currency + ' · 60% del ingreso bruto';
   }
+
+  function updatePriceSlider() {
+    const currency = document.getElementById('sl-currency').value;
+    const cur      = CURRENCIES[currency];
+    const sl       = document.getElementById('sl-precio');
+    sl.min   = cur.priceMin;
+    sl.max   = cur.priceMax;
+    sl.step  = cur.priceStep;
+    sl.value = cur.priceDefault;
+  }
+
+  document.getElementById('sl-currency').addEventListener('change', () => {
+    updatePriceSlider();
+    calcUpdate();
+  });
 
   ['sl-seg', 'sl-likes', 'sl-precio'].forEach(id => {
     document.getElementById(id).addEventListener('input', calcUpdate);
